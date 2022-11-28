@@ -1,8 +1,5 @@
-from datetime import datetime
 
-
-
-class GenerateEmail(object):
+class EmailAdsBoiler(object):
     def __init__(self, program:str, year:int):
         self. program = program
         self.year = year
@@ -12,10 +9,6 @@ class GenerateEmail(object):
 
     def getPrograme(self):
         return self.program
-    
-   
-        
-        
-    
+
 
 
