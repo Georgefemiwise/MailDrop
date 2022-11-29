@@ -1,5 +1,5 @@
 from schoolMailGenerator.AddressBoiler import EmailAdsBoiler
-from .models import BachelorsDegreeAddress as BDA
+from .models import BachelorsDegreeAddresses as BDA
 
 
 
@@ -9,13 +9,13 @@ class DropAddress(EmailAdsBoiler):
      def __init__(self, program:str, year:int, numInClass:int):
           super().__init__(program, year)
           self.numInClass = numInClass
-          
+
 
      def genAddress(self):
           # key email generator
           # it generate Bachelors degree student email only
           for num in range(1,int(self.numInClass)+1):
-               generating = f"{self.program}{str(self.year)}({num:03})@ttu.edu.gh"
+               generating = f"{self.program}{str(self.year)}{num:03}@ttu.edu.gh"
                
                if BDA.objects.filter(Address=generating).exists(): 
                     #checking if the email exists in the database
