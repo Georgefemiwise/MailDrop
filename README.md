@@ -3,7 +3,7 @@ An email sending system that drops simple emails on birthdays, month starts, mon
 
 
 # How it works
-it automatically generates email addresses and saves them base on the year and programs.
+it automatically generates email addresses and saves them based on the year and programs.
 
-from it home page authorised account holders can send email to the entire school.
+It sends email every weekend to respective addresses. 
 
