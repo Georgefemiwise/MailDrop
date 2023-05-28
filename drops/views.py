@@ -12,7 +12,7 @@ def home(request):
           year = request.POST['year']
 
      #refers to the class it called from (DropAddress)
-          address =DropAddress(numInClass=number,program=program,year=year)
+          address = DropAddress(numInClass=number,program=program,year=year)
           address.genAddress()
 
      return render (request, 'templates\index.html')

@@ -1,5 +1,5 @@
 # MailDrop
-An email sending system that drops simple emails on birthdays, month starts, month end, and announcement to students.
+An email sending system that drops simple sends email on the weekeds
 
 
 # How it works
