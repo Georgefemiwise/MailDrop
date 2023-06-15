@@ -1,6 +1,6 @@
 
 class EmailAdsBoiler(object):
-    def __init__(self, program:str, year:int):
+    def __init__(self, *args:str, **kwarargs:int):
         self. program = program
         self.year = year
 
