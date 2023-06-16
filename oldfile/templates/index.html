@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+     {% load static %}
 
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-</head>
+     <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+          <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+     </head>
 
-<style>
-     * {
-          font-weight: bold;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     }
-button{
-     cursor:none;
-}
-     body {
-          background-color: rgb(255, 115, 0);
-     }
-</style>
+     <style>
+          * {
+               font-weight: bold;
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
 
-<body class=" mw-100 vh-100">
+          button {
+               cursor: none;
+          }
 
-     <form action="{% url 'home' %}" method="post">
-          {% csrf_token %}
-          <div class="container py-5 my-5">
+          body {
+               background-color: rgb(255, 115, 0);
+          }
+     </style>
 
-               <div class=" w-100 ">
-                    <select class="btn shadow-sm my-2 w-100" name="year" id="year">
+     <body class=" mw-100 vh-100">
 
-                         <option class="btn btn-transparent text-start mb-2">Select Which Year</option>
-                         <option class="btn btn-light text-start" value="20" disab="disab">2020</option>
-                         <option class="btn btn-light text-start" value="21" disab="disab">2021</option>
-                         <option class="btn btn-light text-start" value="22" disab="disab">2022</option>
+          <form action="{% url 'home' %}" method="post">
+               {% csrf_token %}
+               <div class="container py-5 my-5">
 
-                    </select>
+                    <div class=" w-100 ">
+                         <select class="btn shadow-sm my-2 w-100" name="year" id="year">
 
-                    <select class="btn shadow-sm my-2 w-100" name="program" id="program">
+                              <option class="btn btn-transparent text-start mb-2">Select Which Year</option>
+                              <option class="btn btn-light text-start" value="20" disab="disab">2020</option>
+                              <option class="btn btn-light text-start" value="21" disab="disab">2021</option>
+                              <option class="btn btn-light text-start" value="22" disab="disab">2022</option>
 
-                         <option class="btn btn-light text-start">Select Program</option>
-                         <option class="btn btn-light text-start" value="bcict" disab="disab">B-Tech IT</option>
-                         <option class="btn btn-light text-start" value="#" disab="disab">under construction
-                         </option>
+                         </select>
 
-                    </select>
+                         <select class="btn shadow-sm my-2 w-100" name="program" id="program">
+
+                              <option class="btn btn-light text-start">Select Program</option>
+                              <option class="btn btn-light text-start" value="bcict" disab="disab">B-Tech IT</option>
+                              <option class="btn btn-light text-start" value="#" disab="disab">under construction
+                              </option>
+
+                         </select>
+                    </div>
+
+                    <div class="form-floating w-100 shadow-sm ">
+
+                         <input class="form-control" type="number" name="number" id="number" disab="disab">
+                         <label class="form-control bg-transparent text-capitalize" for="number">number in class</label>
+                    </div>
+
+                    <div class="button mt-2 shadow-sm justify-content-center d-flex">
+                         <button disab class="btn btn-outline-dark w-100" type="submit">Submit</button>
+                    </div>
+
                </div>
+               <a class="btn btn-dark w-100" href="{% url 'emailer' %}">emailer</a>
+          </form>
 
-               <div class="form-floating w-100 shadow-sm ">
-
-                    <input class="form-control" type="number" name="number" id="number" disab="disab">
-                    <label class="form-control bg-transparent text-capitalize" for="number">number in class</label>
-               </div>
-
-               <div class="button mt-2 shadow-sm justify-content-center d-flex">
-                    <button disab class="btn btn-outline-dark w-100" type="submit">Submit</button>
-               </div>
-
-          </div>
-          <a class="btn btn-dark w-100" href="{% url 'emailer' %}">emailer</a>
-     </form>
-
-     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-</body>
+          <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     </body>
 
 </html>
