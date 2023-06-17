@@ -10,4 +10,4 @@ class Student(models.Model):
      created_at = models.DateTimeField(verbose_name='create at', default=timezone.now,auto_now=False, auto_now_add=False)
      
      def __str__ (self) -> str:
-          return self.index, self.program
+          return  self.email

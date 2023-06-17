@@ -12,17 +12,16 @@ def index(request):
 
 def createStudentDetails(request):
      if request.method == 'POST':
-          index = request.POST['index']
-          program = request.POST['program']
+          program =  request.POST['program']
           email =  request.POST['email']
           level = request.POST['level']
           year = request.POST['year']
           totalInClass = 15 + 1
           
           # not sure about how many student in class but will render only 111
-          for classNum in range(1,totalInClass):
-               generatedEmail = f"{program}{str(year)}{classNum:03}@ttu.edu.gh"
-               
+          for index in range(1,totalInClass):
+               generatedEmail = f"{program}{str(year)}{index:03}@ttu.edu.gh"
+                          
                
                # check if the object dose not already
                if not Student.objects.filter(email = generatedEmail).exists(): 
@@ -35,11 +34,13 @@ def createStudentDetails(request):
      return HttpResponse('form')
 
 
-def getStudentAllDetails(request):
+# function to get all student
+
+def getAllStudentDetails(request):
      
      
-     Student.objects.all()
-     return HttpResponse('getting student details')
+     allStudent = Student.objects.all().count()
+     return HttpResponse('getting student details {0} s'.format(allStudent))
 
 
 # def getEmail(*args):
