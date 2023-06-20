@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import Student
 from django.http import HttpResponse
+from django.shortcuts import render
+from datetime  import datetime
 
-# Create your views here.
 
 
 def index(request):
@@ -11,27 +12,43 @@ def index(request):
 
 
 def createStudentDetails(request):
-     if request.method == 'POST':
-          program =  request.POST['program']
-          email =  request.POST['email']
-          level = request.POST['level']
-          year = request.POST['year']
-          totalInClass = 15 + 1
-          
-          # not sure about how many student in class but will render only 111
-          for index in range(1,totalInClass):
-               generatedEmail = f"{program}{str(year)}{index:03}@ttu.edu.gh"
-                          
-               
-               # check if the object dose not already
-               if not Student.objects.filter(email = generatedEmail).exists(): 
+    thisYear = datetime.now().year
+    
+    
+    
+    if request.method == 'POST':
+        program = request.POST['program']
+        level = request.POST['level']
+        year = request.POST['year']
+        totalInClass = 16
+        
+        if year is None and year > thisYear:
+            print('errro year: %s is greater than %s' % year, thisYear )
+            
+        else:
+            
+
+            for index in range(1, totalInClass):
+                generatedEmail = f"{program}{str(year)}{index:03}@ttu.edu.gh"
+
+                # Check if the object does not already exist
+                if not Student.objects.filter(email=generatedEmail).exists():
+                    # Save the object to the database
+                    newStudent = Student.objects.create(
+                        index = index,
+                        program = program,
+                        email = generatedEmail,
+                        level = level,
+                        year_enrolled = year,
+                    )
+                    newStudent.save()  
                     
-                    # save the objects to the database 
-                    newEmail = Student.objects.create(email = generatedEmail, index = index, program = program, level = level, year = year,)
-                    newEmail.save
-              
-   
-     return HttpResponse('form')
+                    
+                    # Check for form validation errors
+                    if newStudent.pk is None:
+                        print(newStudent.errors)
+    return render(request, 'templates/index.html')
+
 
 
 # function to get all student
