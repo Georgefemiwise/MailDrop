@@ -1,70 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-     {% load static %}
 
-     <head>
-          <meta charset="UTF-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
-          <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-     </head>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
 
-     <style>
-          * {
-               font-weight: bold;
-               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          }
+	<body>
+		<div id="loader" class="overlay">
+			<div class="overlay__inner">
+				<div class="overlay__content"><span class="spinner"></span></div>
+			</div>
+		</div>
 
-          button {
-               cursor: none;
-          }
+		<div class="formbold-main-wrapper">
+			<div class="formbold-form-wrapper">
 
-          body {
-               background-color: rgb(158, 157, 159);
-          }
 
-     </style>
+				<form action="{% url 'index' %}" method="POST">
+					{% csrf_token %}
+					<div class="formbold-form-title">
+						<h2 class=""></h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+							eiusmod tempor incididunt.
+						</p>
+					</div>
 
-     <body class=" mw-100 vh-100">
+					<div class="formbold-input">
+						<div>
+							<label for="program" class="formbold-form-label">
+								Program
+							</label>
+							<input type="text" name="program" id="program" class="formbold-form-input" />
+						</div>
+					</div>
+					<div class="formbold-input">
+						<div>
+							<label for="year" class="formbold-form-label"> Year enrolled </label>
 
-          <form action="{% url 'home' %}" method="post">
-               {% csrf_token %}
-               <div class="container py-5 my-5">
+							<input type="text" name="year" id="year" pattern="\d{4}" maxlength="4" placeholder="YYYY"
+								class="formbold-form-input" />
+						</div>
+					</div>
 
-                    <div class=" w-100 ">
-                         <select class="btn btn-dark shadow-sm my-2 w-50 " name="year" id="year">
+					<div class="formbold-input-flex">
 
-                              <option class="btn btn-transparent text-start mb-2">Select Which Year</option>
-                              <option class="btn btn-light text-start" value="20" disab="disab">2020</option>
-                              <option class="btn btn-light text-start" value="21" disab="disab">2021</option>
-                              <option class="btn btn-light text-start" value="22" disab="disab">2022</option>
+						<div>
+							<label for="level" class="formbold-form-label"> level </label>
+							<input type="text" name="level" id="level" class="formbold-form-input" />
+						</div>
+					</div>
 
-                         </select>
 
-                         <select class="btn  btn-dark shadow-sm my-2 w-100" name="program" id="program">
 
-                              <option class="btn btn-light text-start">Select Program</option>
-                              <option class="btn btn-light text-start" value="bcict" disab="disab">B-Tech IT</option>
-                              <option class="btn btn-light text-start" value="#" disab="disab">under construction
-                              </option>
+					<button class="formbold-btn">Register Now</button>
+				</form>
+			</div>
+		</div>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-                         </select>
-                    </div>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
 
-                    <div class="form-floating w-100  shadow-sm ">
+			body {
+				font-family: 'Inter', sans-serif;
+				background-color: #07074d;
+			}
 
-                         <input class="form-control" type="number" name="number" id="number" disab="disab">
-                         <label class="form-control bg- text-capitalize" for="number">number in class</label>
-                    </div>
+			.formbold-mb-3 {
+				margin-bottom: 15px;
+			}
 
-                    <div class="button mt-2 shadow-sm justify-content-center d-flex">
-                         <button disab class="btn btn-outline-dark w-100" type="submit">Submit</button>
-                    </div>
+			.formbold-relative {
+				position: relative;
+			}
 
-               </div>
-          </form>
-          <script src="{% static 'js/bootstrap.min.js' %}"></script>
-     </body>
+			.formbold-opacity-0 {
+				opacity: 0;
+			}
 
+			.formbold-stroke-current {
+				stroke: currentColor;
+			}
+
+			#supportCheckbox:checked~div span {
+				opacity: 1;
+			}
+
+			.formbold-main-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 48px;
+			}
+
+			.formbold-form-wrapper {
+				margin: 0 auto;
+				max-width: 570px;
+				width: 100%;
+				background: white;
+				padding: 40px;
+			}
+
+			.formbold-img {
+				margin-bottom: 45px;
+			}
+
+			.formbold-form-title {
+				margin-bottom: 30px;
+			}
+
+			.formbold-form-title h2 {
+				font-weight: 600;
+				font-size: 28px;
+				line-height: 34px;
+				color: #07074d;
+			}
+
+			.formbold-form-title p {
+				font-size: 16px;
+				line-height: 24px;
+				color: #536387;
+				margin-top: 12px;
+			}
+
+			.formbold-input-flex {
+				display: flex;
+				gap: 20px;
+				margin-bottom: 15px;
+			}
+
+			.formbold-input-flex>div {
+				width: 50%;
+			}
+
+			.formbold-form-input {
+
+				width: 100%;
+				padding: 13px 22px;
+				border-radius: 5px;
+				border: 1px solid #dde3ec;
+				background: #ffffff;
+				font-weight: 500;
+				font-size: 16px;
+				/* color: #010306; */
+				outline: none;
+				resize: none;
+				margin-top: 1rem;
+			}
+
+			.formbold-form-input:focus {
+				border-color: #6a64f1;
+				box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+			}
+
+			.formbold-form-label {
+				/* color: #536387; */
+				font-size: 14px;
+				line-height: 24px;
+				display: block;
+				margin-bottom: 10px;
+			}
+
+			.formbold-checkbox-label {
+				display: flex;
+				cursor: pointer;
+				user-select: none;
+				font-size: 16px;
+				line-height: 24px;
+				color: #536387;
+			}
+
+			.formbold-checkbox-label a {
+				margin-left: 5px;
+				color: #6a64f1;
+			}
+
+			.formbold-input-checkbox {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				white-space: nowrap;
+				border-width: 0;
+			}
+
+			.formbold-checkbox-inner {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 20px;
+				height: 20px;
+				margin-right: 16px;
+				margin-top: 2px;
+				border: 0.7px solid #dde3ec;
+				border-radius: 3px;
+			}
+
+			.formbold-btn {
+				font-size: 16px;
+				border-radius: 5px;
+				padding: 14px 25px;
+				border: none;
+				font-weight: 500;
+				background-color: #6a64f1;
+				color: white;
+				cursor: pointer;
+				margin-top: 25px;
+			}
+
+			.formbold-btn:hover {
+				box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+			}
+
+
+
+			.overlay {
+				display: none;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				background: #2222227b;
+			}
+
+			.overlay__inner {
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+
+			.overlay__content {
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.spinner {
+				width: 75px;
+				height: 75px;
+				display: inline-block;
+				border-width: 2px;
+				border-color: rgba(255, 255, 255, 0.05);
+				border-top-color: #fff;
+				animation: spin 1s infinite linear;
+				border-radius: 100%;
+				border-style: solid;
+			}
+
+			@keyframes spin {
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</body>
+<script>
+	window.addEventListener('load', function () {
+		var loader = document.getElementById('loader');
+		loader.style.display = 'flex';
+
+		// Hide the loader after a delay or when the content has finished loading
+		setTimeout(function () {
+			loader.style.display = 'none';
+		}, 2000); // Adjust the delay as needed
+	});
+
+</script>
 </html>
+<!-- 0720000 -->
