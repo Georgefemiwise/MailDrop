@@ -1,5 +1,5 @@
 # MailDrop
-An email sending system that drops simple sends email on the weekeds
+An email sending system that drops simple emails on the weekends.
 
 
 # How it works
