@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 import os
-from .config import SECRET_KEY
+from .config import *
 
 
 
@@ -54,6 +54,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+
 
 ROOT_URLCONF = 'maildrop.urls'
 
@@ -123,7 +130,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'maildrops.fun@gmail.com'
-EMAIL_HOST_PASSWORD = 'twtkvyihjsvvnwyb'
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD 
 
 
 # Static files (CSS, JavaScript, Images)
