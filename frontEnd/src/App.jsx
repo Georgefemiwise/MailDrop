@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import Contact from './components/Contact';
 
 export default function App() {
+
+	fetch('abc', {
+		
+	})
 	return (
 		<>
 			<Navbar />

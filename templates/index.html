@@ -37,7 +37,7 @@
 					<div class="formbold-input">
 						<div>
 							<label for="year_enrolled" class="formbold-form-label">Year enrolled</label>
-							<input placeholder="abc" title="abc" type="number" name="year_enrolled" id="year_enrolled" min="1900" max="2100" class="formbold-form-input"
+							<!-- <input placeholder="123" title="123" type="number" name="year_enrolled" id="year_enrolled" min="1900" max="2100" class="formbold-form-input" -->
 								required />
 						</div>
 					</div>
@@ -45,7 +45,7 @@
 					<div class="formbold-input-flex">
 						<div>
 							<label for="level" class="formbold-form-label">Level</label>
-							<input placeholder="abc" title="abc" type="text" name="level" id="level" class="formbold-form-input" required />
+							<!-- <input placeholder="abc" title="abc" type="text" name="level" id="level" class="formbold-form-input" required /> -->
 						</div>
 					</div>
 
@@ -70,14 +70,14 @@
 
 				// Get the form data
 				const program = document.getElementById('program').value;
-				const year = document.getElementById('year_enrolled').value;
-				const level = document.getElementById('level').value;
+				// const year = document.getElementById('year_enrolled').value;
+				// const level = document.getElementById('level').value;
 
 				// Create a JSON object with the form data
 				const formData = {
 					program: program,
-					year: year,
-					level: level
+					// year: year,
+					// level: level
 				};
 				function getCSRFToken() {
 					const cookieValue = document.cookie
@@ -91,6 +91,9 @@
 
 				const csrftoken = getCSRFToken(); // Retrieve the CSRF token
 
+
+
+			
 				// Send a POST request to the Django view
 				fetch("{% url 'create_student' %}", {
 					method: 'POST',

@@ -1,66 +1,55 @@
-from .models import Student
 from django.shortcuts import render
-from datetime  import datetime
+from datetime import datetime
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
+from .models import Student
+from .form import StudentForm
 
 
 def index(request):
-     
-     return render(request,'index.html')
-
-
-# Create (POST request)
-from datetime import datetime
+    return render(request, 'index.html')
 
 def create_student(request):
     thisYear = datetime.now().year
+
     if request.method == 'POST':
-        program = request.POST.get('program')
-        level = request.POST.get('level')
-        year = request.POST.get('year_enrolled')
-        totalInClass = 16
+        form = StudentForm(request.POST)
 
-        if year is None:
-            return JsonResponse({'error': 'Year value is missing'})
+        if form.is_valid():
+            program = form.cleaned_data['program']
+            level = 200  # Hardcoded level value for now
+            year = form.cleaned_data['year_enrolled']
+            totalInClass = 16
 
-        try:
-            year = int(year)  # Convert year to integer
-        except ValueError:
-            return JsonResponse({'error': 'Invalid year value'})
+            if year > thisYear:
+                error_message = 'Error: year {} is greater than {}'.format(year, thisYear)
+                return JsonResponse({'error': error_message})
 
-        if year > thisYear:
-            error_message = 'Error: year {} is greater than {}'.format(year, thisYear)
-            return JsonResponse({'error': error_message})
+            for index in range(1, totalInClass):
+                generatedEmail = f"{program}{year}{index:03}@ttu.edu.gh"
 
-        if program is None or program.strip() == "":
-            return JsonResponse({'error': 'Program value is missing'})
+                if not Student.objects.filter(email=generatedEmail).exists():
+                    newStudent = Student(
+                        index=index,
+                        program=program,
+                        email=generatedEmail,
+                        level=level,
+                        year_enrolled=year,
+                    )
+                    newStudent.save()
 
-        for index in range(1, totalInClass):
-            generatedEmail = f"{program}{year}{index:03}@ttu.edu.gh"
+                    if newStudent.pk is None:
+                        return JsonResponse({'error': 'Error saving the student'})
 
-            # Check if the object does not already exist
-            if not Student.objects.filter(email=generatedEmail).exists():
-                # Save the object to the database
-                newStudent = Student(
-                    index=index,
-                    program=program,
-                    email=generatedEmail,
-                    level=level,
-                    year_enrolled=year,
-                )
-                newStudent.save()
+            return JsonResponse({'message': 'Student created successfully'})
 
-                # Check for form validation errors
-                if newStudent.pk is None:
-                    return JsonResponse({'error': 'Error saving the student'})
+        else:
+            errors = form.errors.as_json()
+            return JsonResponse({'error': errors})
 
-        # Return a success response
-        return JsonResponse({'message': 'Student created successfully'})
+    else:
+        form = StudentForm()
 
-    # Return an error response for invalid request methods
-    return JsonResponse({'error': 'Invalid request method'})
-
+    return render(request, 'index.html', {'form': form})
 
 
 
