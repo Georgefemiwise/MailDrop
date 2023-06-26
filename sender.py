@@ -23,3 +23,13 @@ while True:
     else:
         time.sleep(3600) # wait for 1 hour
 
+python -m venv env
+env/Scripts/.\Activate.ps1
+cd ..
+cd ..
+pip install django  djangorestframework
+
+django-admin startproject maildrop
+cd maildrop
+code .
+

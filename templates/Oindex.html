@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div class="formbold-main-wrapper">
+			<div class="formbold-form-wrapper">
+				{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+						{% endfor %}
+				</ul>
+				{% endif %}
+
+				<form method="POST" action="{% url 'create_student' %}" id="student-form">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		document.getElementById('student-form').addEventListener('submit', function (event) {
+			event.preventDefault(); // Prevent the form from submitting normally
+
+			// Get the form data
+			const program = document.getElementById('id_program').value;
+			const level = document.getElementById('id_level').value;
+			const year_enrolled = document.getElementById('id_year_enrolled').value;
+
+			// Create a JSON object with the form data
+			const formData = {
+				program: program,
+				level: level,
+				year_enrolled: year_enrolled
+			};
+
+			fetch("{% url 'create_student' %}", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"X-CSRFToken": "{{ csrf_token }}"
+				},
+				body: JSON.stringify(formData)
+			})
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (data) {
+					// Handle the response data
+					if (data.errors) {
+						const errorMessages = JSON.parse(data.errors);
+						const formValues = data.form;
+						Object.keys(errorMessages).forEach(function (fieldName) {
+							const errorMessage = errorMessages[fieldName][0].message;
+							alert(errorMessage);
+							// You can also highlight the corresponding form field or display the error message near the field
+							// For example, to highlight the program field:
+							document.getElementById(`id_${fieldName}`).classList.add('error');
+						});
+					} else {
+						alert(data.message);
+						location.reload(); // Reload the page after successful submission
+					}
+				})
+				.catch(function (error) {
+					console.error('Error:', error);
+				});
+		});
+	</script>
+
+
+
+
+</html>
+
+
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.error {
+		background-color: red;
+		border: solid red
+	}
+
+	;
+
+	body {
+		font-family: 'Inter', sans-serif;
+		background-color: #07074d;
+	}
+
+	.formbold-mb-3 {
+		margin-bottom: 15px;
+	}
+
+	.formbold-relative {
+		position: relative;
+	}
+
+	.formbold-opacity-0 {
+		opacity: 0;
+	}
+
+	.formbold-stroke-current {
+		stroke: currentColor;
+	}
+
+	#supportCheckbox:checked~div span {
+		opacity: 1;
+	}
+
+	.formbold-main-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 48px;
+	}
+
+	.formbold-form-wrapper {
+		margin: 0 auto;
+		max-width: 570px;
+		width: 100%;
+		background: white;
+		padding: 40px;
+	}
+
+	.formbold-img {
+		margin-bottom: 45px;
+	}
+
+	.formbold-form-title {
+		margin-bottom: 30px;
+	}
+
+	.formbold-form-title h2 {
+		font-weight: 600;
+		font-size: 28px;
+		line-height: 34px;
+		color: #07074d;
+	}
+
+	.formbold-form-title p {
+		font-size: 16px;
+		line-height: 24px;
+		color: #536387;
+		margin-top: 12px;
+	}
+
+	.formbold-input-flex {
+		display: flex;
+		gap: 20px;
+		margin-bottom: 15px;
+	}
+
+	.formbold-input-flex>div {
+		width: 50%;
+	}
+
+	.formbold-form-input {
+
+		width: 100%;
+		padding: 13px 22px;
+		border-radius: 5px;
+		border: 1px solid #dde3ec;
+		background: #ffffff;
+		font-weight: 500;
+		font-size: 16px;
+		/* color: #010306; */
+		outline: none;
+		resize: none;
+		margin-top: 1rem;
+	}
+
+	.formbold-form-input:focus {
+		border-color: #6a64f1;
+		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+	}
+
+	.formbold-form-label {
+		/* color: #536387; */
+		font-size: 14px;
+		line-height: 24px;
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	.formbold-checkbox-label {
+		display: flex;
+		cursor: pointer;
+		user-select: none;
+		font-size: 16px;
+		line-height: 24px;
+		color: #536387;
+	}
+
+	.formbold-checkbox-label a {
+		margin-left: 5px;
+		color: #6a64f1;
+	}
+
+	.formbold-input-checkbox {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
+
+	.formbold-checkbox-inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		height: 20px;
+		margin-right: 16px;
+		margin-top: 2px;
+		border: 0.7px solid #dde3ec;
+		border-radius: 3px;
+	}
+
+	.formbold-btn {
+		font-size: 16px;
+		border-radius: 5px;
+		padding: 14px 25px;
+		border: none;
+		font-weight: 500;
+		background-color: #6a64f1;
+		color: white;
+		cursor: pointer;
+		margin-top: 25px;
+	}
+
+	.formbold-btn:hover {
+		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+	}
+
+
+
+	.overlay {
+		display: none;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		background: #2222227b;
+	}
+
+	.overlay__inner {
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.overlay__content {
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.spinner {
+		width: 75px;
+		height: 75px;
+		display: inline-block;
+		border-width: 2px;
+		border-color: rgba(255, 255, 255, 0.05);
+		border-top-color: #fff;
+		animation: spin 1s infinite linear;
+		border-radius: 100%;
+		border-style: solid;
+	}
+
+	@keyframes spin {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>
+</body>
