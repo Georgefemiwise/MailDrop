@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function Fetch({ url, options, render }) {
+export default function fetchData(url, options = {}) {
 	const [data, setData] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const [count, setCount] = useState(0);
 
 	useEffect(() => {
-		const fetchData = async () => {
+		const fetchDataAsync = async () => {
 			setIsLoading(true);
 
 			try {
 				const response = await fetch(url, options);
 				const jsonData = await response.json();
 				setData(jsonData);
-				setIsLoading(false);
+				setCount(jsonData.length);
 			} catch (error) {
-				setError(error);
-				setIsLoading(false);
+				setError(error.message);
 			}
+
+			setIsLoading(false);
 		};
 
-		fetchData();
-	}, [url, options]);
+		fetchDataAsync();
+	}, []);
 
-	return render({ data, isLoading, error });
+	return { data, isLoading, error, count };
 }

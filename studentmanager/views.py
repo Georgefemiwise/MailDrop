@@ -1,15 +1,14 @@
 from django.shortcuts import render
 from datetime import datetime
 from django.shortcuts import get_object_or_404
-
-
 from .models import Student
-from .forms import StudentForm
-import json
 from django.shortcuts import redirect
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.contrib import messages
+from .serializers import StudentSerializer
+from .serializers import StudentSerializer, ProgramSerializer
+
 
 
 def index(request):
@@ -18,68 +17,70 @@ def index(request):
 
 @api_view(['POST'])
 def create_student(request):
-    thisYear = datetime.now().year
+    serializer = StudentSerializer(data=request.data)
+    if serializer.is_valid():
+        program = serializer.validated_data['program']
+        level = serializer.validated_data['level']
+        year = serializer.validated_data['year_enrolled']
+        numInClass = serializer.validated_data['classTotal']
+        
+        thisYear = datetime.now().year
 
-    if request.method == 'POST':
-        form = StudentForm(request.POST)
+        if year > thisYear:
+            error_message = 'Error: year {} is greater than {}'.format(year, thisYear)
+            return Response({'error': error_message}, status=400)
+        
 
-        if form.is_valid():
-            program = form.cleaned_data['program']
-            level = form.cleaned_data['level']
-            year = form.cleaned_data['year_enrolled']
-            totalInClass = 16
+        for index in range(1, numInClass):
+            generatedEmail = f"{program}{year}{index:03}@ttu.edu.gh"
 
-            if year > thisYear:
-                error_message = 'Error: year {} is greater than {}'.format(year, thisYear)
-                messages.error(request, error_message)
-                return redirect('index')
+            if not Student.objects.filter(email=generatedEmail).exists():
+                newStudent = Student(
+                    index=index,
+                    program=program,
+                    email=generatedEmail,
+                    level=level,
+                    year_enrolled=year[2:],
+                )
+                newStudent.save()
 
-            for index in range(1, totalInClass):
-                generatedEmail = f"{program}{year}{index:03}@ttu.edu.gh"
+                if newStudent.pk is None:
+                    error_message = 'Error saving the student'
+                    return Response({'error': error_message}, status=500)
 
-                if not Student.objects.filter(email=generatedEmail).exists():
-                    newStudent = Student(
-                        index=index,
-                        program=program,
-                        email=generatedEmail,
-                        level=level,
-                        year_enrolled=year,
-                    )
-                    newStudent.save()
+        success_message = 'Student created successfully'
+        return Response({'message': success_message}, status=201)
 
-                    if newStudent.pk is None:
-                        error_message = 'Error saving the student'
-                        messages.error(request, error_message)
-                        return redirect('index')
+    return Response(serializer.errors, status=400)
 
-            success_message = 'Student created successfully'
-            messages.success(request, success_message)
-            return redirect('index')
 
-        else:
-            errors = json.loads(form.errors.as_json())
-            for field, field_errors in errors.items():
-                for error in field_errors:
-                    messages.error(request, error['message'])
-            return redirect('index')
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import StudentSerializer
 
 @api_view(['GET'])
 def get_all_students(request):
     if request.method == 'GET':
         students = Student.objects.all()
+        serializer = StudentSerializer(students, many=True)
 
-        # Serialize the students into JSON format
-        serialized_students = [{'program': student.program,
-                                'level': student.level,
-                                'year': student.year_enrolled,
-                                'id': student.id,
-                                'index':student.index,
-                                'email': student.email
-                                } for student in students]
+        # Retrieve the serialized data
+        serialized_students = serializer.data
 
-        # Return the serialized students as a response
+        # Add program information to each student
+        for student_data in serialized_students:
+            student = Student.objects.get(id=student_data['id'])
+            program = student.program
+            program_data = {
+                'name': program.name,
+                'department': program.department.name
+            }
+            student_data['program'] = program_data
+
+        # Return the updated serialized students as a response
         return Response(serialized_students)
+
+
     
 @api_view(['GET'])
 def get_student(request, student_index):
