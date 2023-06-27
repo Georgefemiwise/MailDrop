@@ -11,9 +11,7 @@ export default function MainFrame() {
 			<TopFrame>
 				<NavBar />
 			</TopFrame>
-			<ContentFrame>
-				
-			</ContentFrame>
+			<ContentFrame />
 		</div>
 	);
 }

@@ -4,9 +4,8 @@ import ContentFrame from '../layout/ContentFrame';
 
 export default function Home() {
 	return (
-		<div className='home'>
-			<ContentFrame>jgvfjcfgc</ContentFrame>
-			<Outlet />
+		<div className='home capitalize'>
+		home
 		</div>
 	);
 }

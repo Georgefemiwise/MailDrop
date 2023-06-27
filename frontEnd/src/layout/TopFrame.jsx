@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function TopFrame({children}) {
   return (
-	<div>{children}</div>
+	<div className='py-5 bg-slate-400'>{children}</div>
   )
 }
 
