@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar() {
 	return (
-		<nav className='navbar bg-purple-950 flex justify-center '>
+		<nav className='navbar flex justify-center '>
 			<ul className='menu menu-horizontal bg-base-200 rounded-box  gap-5'>
 				<li>
 					<Link to='/'
@@ -28,7 +28,7 @@ export default function NavBar() {
 				</li>
 				<li>
 					<a
-						className='tooltip tooltip-error'
+						className='tooltip tooltip-error hover:bg-transparent'
 						data-tip='Details'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
