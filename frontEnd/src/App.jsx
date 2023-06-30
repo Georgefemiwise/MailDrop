@@ -4,6 +4,7 @@ import MainFrame from './layout/MainFrame';
 import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Statistics from './pages/Statistics';
+import CreateStudent from './pages/CreateStudent';
 
 export default function App() {
 	return (
@@ -12,8 +13,8 @@ export default function App() {
 				<Route path='/' element={<MainFrame />}>
 					<Route index element={<Home />} />
 					<Route path='statistics' element={<Statistics />} />
-					{/* <Route path='about' element={<About />} />
-					<Route path='dashboard' element={<Dashboard />} /> */}
+					<Route path='create' element={<CreateStudent />} />
+					{/* <Route path='dashboard' element={<Dashboard />} /> */}
 
 					<Route path='*' element={<NoMatch />} />
 				</Route>

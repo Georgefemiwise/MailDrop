@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-// import Navbar from './components/NavBar';
-// import Stats from './components/Stats';
-// import Fetch from './Fetch';
-// import React from 'react';
+import fetchData from '../../Fetch';
 
 export default function StudentForm() {
+	const { data, isLoading, error } = fetchData(
+		'http://127.0.0.1:8000/api/program/all/',
+	);
+
 	const [newStudent, setNewStudent] = useState({
-		program: '',
+		program: { id: '', name: '' }, // Initialize program as a nested dictionary
 		level: '',
 		year_enrolled: '',
-		total_number_in_class: '',
-		email: '',
+		classTotal: '',
 	});
 
 	const handleInputChange = (event) => {
@@ -21,8 +21,16 @@ export default function StudentForm() {
 		}));
 	};
 
-	
-	
+	const handleProgramChange = (event) => {
+		const { value, text } = event.target.selectedOptions[0];
+		setNewStudent((prevStudent) => ({
+			...prevStudent,
+			program: { id: value, name: text },
+		}));
+	};
+
+	console.log(newStudent);
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
@@ -46,14 +54,15 @@ export default function StudentForm() {
 					program: '',
 					level: '',
 					year_enrolled: '',
-					total_number_in_class: '',
-					email: '',
+					classTotal: '',
 				});
 			} else {
-				console.log('Error sending data to the backend');
+				console.log(
+					'Error sending data to the backend for some reason',
+				);
 			}
 		} catch (error) {
-			console.log('Error sending data to the backend:', error);
+			console.log('Fetch Error sending data to the backend:', error);
 		}
 	};
 
@@ -61,20 +70,12 @@ export default function StudentForm() {
 		<div className='card w-96 bg-neutral text-neutral-content'>
 			<div className='card-body items-center text-center'>
 				<h2 className='card-title font-black'>Student Form!</h2>
-				<p className='text-xs'>
-					Create an entire class of student{' '}
-				</p>{' '}
+				<p className='text-xs'>Create an entire class of student</p>
+
 				<form
+					method='post'
 					onSubmit={handleSubmit}
 					className='flex flex-col gap-2 w-full '>
-					<input
-						type='text'
-						name='program'
-						value={newStudent.program}
-						onChange={handleInputChange}
-						placeholder='Program'
-						className='input input-bordered w-full max-w-xs '
-					/>
 					<input
 						type='text'
 						name='level'
@@ -94,35 +95,28 @@ export default function StudentForm() {
 					<input
 						type='text'
 						name='classTotal'
-						value={newStudent.total_number_in_class}
+						value={newStudent.classTotal}
 						onChange={handleInputChange}
 						placeholder='Class total'
-						className='input input-bordered w-full max-w-xs '
+						className='input input-bordered w-full max-w-xs'
 					/>
-					{/* <input
-						type='text'
-						name='year'
-						value={newStudent.year}
-						onChange={handleInputChange}
-						placeholder='Year'
-						className='input input-bordered w-full max-w-xs '
-					/> */}
-					{/* <input
-						type='text'
-						name='index'
-						value={newStudent.index}
-						onChange={handleInputChange}
-						placeholder='Index'
-						className='input input-bordered w-full max-w-xs '
-					/> */}
-					{/* <input
-						type='email'
-						name='email'
-						value={newStudent.email}
-						onChange={handleInputChange}
-						placeholder='Email'
-						className='input input-bordered w-full max-w-xs '
-					/> */}
+
+					<select
+						name='program'
+						value={newStudent.program.id.toString()} // Convert id to a string
+						onChange={handleProgramChange}
+						className='select select-bordered w-full max-w-xs'>
+						<option disabled value=''>
+							choose a program
+						</option>
+						{data &&
+							!isLoading &&
+							data.map((item) => (
+								<option key={item.id} value={item.id}>
+									{item.name}
+								</option>
+							))}
+					</select>
 
 					<div className='card-actions '>
 						<button type='submit' className='btn btn-primary'>

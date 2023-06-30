@@ -39,8 +39,8 @@ class Program(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=50, blank=True)
-    index = models.IntegerField(verbose_name='Student index number')
-    email = models.CharField(verbose_name='Email address', max_length=60, unique=True)
+    index = models.IntegerField(verbose_name='Student index number', blank=True)
+    email = models.CharField(verbose_name='Email address', max_length=60, unique=True, blank=True)
     level = models.IntegerField(verbose_name='Level of study', default=100)
     year_enrolled = models.IntegerField(verbose_name='Year enrolled', default=datetime.now().year)
     program = models.ForeignKey(Program, verbose_name="Program of study", on_delete=models.CASCADE,null=True)

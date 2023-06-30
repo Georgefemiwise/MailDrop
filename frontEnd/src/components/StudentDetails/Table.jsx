@@ -4,7 +4,7 @@ export default function Table() {
 	const { data, isLoading, error } = fetchData(
 		'http://127.0.0.1:8000/api/students/',
 	);
-
+console.log(data);
 	return (
 		<>
 			<div className='mt-5 flex justify-center'>

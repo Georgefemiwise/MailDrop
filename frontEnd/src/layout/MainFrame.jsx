@@ -7,7 +7,7 @@ import TopFrame from './TopFrame';
 
 export default function MainFrame() {
 	return (
-		<div className='mainfraim flex flex-col h-screen'>
+		<div className='mainfraim flex flex-col h-screen bg-slate-900 justify-center items-center'>
 			<TopFrame>
 				<NavBar />
 			</TopFrame>

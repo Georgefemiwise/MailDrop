@@ -4,7 +4,7 @@ import fetchData from '../Fetch';
 import Table from '../components/StudentDetails/Table';
 
 export default function Statistics() {
-	const { data, isLoading, error, count } = fetchData(
+	const { count } = fetchData(
 		'http://127.0.0.1:8000/api/students/',
 	);
 	return (

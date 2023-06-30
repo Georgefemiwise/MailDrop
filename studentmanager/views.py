@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from datetime import datetime
 from django.shortcuts import get_object_or_404
-from .models import Student
+from .models import Student, Department,Program
 from django.shortcuts import redirect
 
 from rest_framework.decorators import api_view
@@ -9,7 +9,13 @@ from rest_framework.response import Response
 from .serializers import StudentSerializer
 from .serializers import StudentSerializer, ProgramSerializer
 
+# program_name = program_data.get('name', '').lower()
 
+# # Retrieve the Program instance from the database
+# program = get_object_or_404(Program, name=program_name)
+
+# # Assign the Program instance to the student object
+# student.program = program
 
 def index(request):
     return render(request, 'index.html')
@@ -19,28 +25,32 @@ def index(request):
 def create_student(request):
     serializer = StudentSerializer(data=request.data)
     if serializer.is_valid():
-        program = serializer.validated_data['program']
         level = serializer.validated_data['level']
         year = serializer.validated_data['year_enrolled']
-        numInClass = serializer.validated_data['classTotal']
+        classTotal = request.data.get('classTotal')
         
+        program_data = serializer.validated_data['program']
+        program_name = program_data.get('name').lower()
+
         thisYear = datetime.now().year
 
         if year > thisYear:
             error_message = 'Error: year {} is greater than {}'.format(year, thisYear)
             return Response({'error': error_message}, status=400)
         
-
-        for index in range(1, numInClass):
-            generatedEmail = f"{program}{year}{index:03}@ttu.edu.gh"
+        for index in range(1, int(classTotal) + 1):
+            generatedEmail = f"{program_name}{str(year)[2:]}{index:03}@ttu.edu.gh"
 
             if not Student.objects.filter(email=generatedEmail).exists():
+                # Retrieve the Program instance from the database
+                program = get_object_or_404(Program, name__iexact=program_name.lower())
+                
                 newStudent = Student(
                     index=index,
                     program=program,
                     email=generatedEmail,
                     level=level,
-                    year_enrolled=year[2:],
+                    year_enrolled=year,
                 )
                 newStudent.save()
 
@@ -54,9 +64,7 @@ def create_student(request):
     return Response(serializer.errors, status=400)
 
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .serializers import StudentSerializer
+
 
 @api_view(['GET'])
 def get_all_students(request):
@@ -67,7 +75,7 @@ def get_all_students(request):
         # Retrieve the serialized data
         serialized_students = serializer.data
 
-        # Add program information to each student
+        # Add email and index fields to each student
         for student_data in serialized_students:
             student = Student.objects.get(id=student_data['id'])
             program = student.program
@@ -76,9 +84,26 @@ def get_all_students(request):
                 'department': program.department.name
             }
             student_data['program'] = program_data
+            student_data['email'] = student.email
+            student_data['index'] = student.index
 
         # Return the updated serialized students as a response
         return Response(serialized_students)
+
+    
+    
+@api_view(['GET'])
+def get_all_departments(request):
+    if request.method == 'GET':
+        departments = Department.objects.all().values('id', 'name')
+        return Response(departments)
+    
+    
+@api_view(['GET'])
+def get_all_programs(request):
+    if request.method == 'GET':
+        programs = Program.objects.all().values('id', 'name')
+        return Response(programs)
 
 
     
