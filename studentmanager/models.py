@@ -38,7 +38,7 @@ class Program(models.Model):
 
 
 class Student(models.Model):
-    name = models.CharField(max_length=50, blank=True)
+    name = models.CharField(max_length=50, blank=True, default='student')
     index = models.IntegerField(verbose_name='Student index number', blank=True)
     email = models.CharField(verbose_name='Email address', max_length=60, unique=True, blank=True)
     level = models.IntegerField(verbose_name='Level of study', default=100)

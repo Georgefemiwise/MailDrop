@@ -9,16 +9,7 @@ from rest_framework.response import Response
 from .serializers import StudentSerializer
 from .serializers import StudentSerializer, ProgramSerializer
 
-# program_name = program_data.get('name', '').lower()
 
-# # Retrieve the Program instance from the database
-# program = get_object_or_404(Program, name=program_name)
-
-# # Assign the Program instance to the student object
-# student.program = program
-
-def index(request):
-    return render(request, 'index.html')
 
 
 @api_view(['POST'])
@@ -48,7 +39,7 @@ def create_student(request):
                 newStudent = Student(
                     index=index,
                     program=program,
-                    email=generatedEmail,
+                    email=generatedEmail.lower(),
                     level=level,
                     year_enrolled=year,
                 )
@@ -62,7 +53,6 @@ def create_student(request):
         return Response({'message': success_message}, status=201)
 
     return Response(serializer.errors, status=400)
-
 
 
 
@@ -90,7 +80,30 @@ def get_all_students(request):
         # Return the updated serialized students as a response
         return Response(serialized_students)
 
+        
+@api_view(['GET'])
+def get_student(request, student_index):
+    student = get_object_or_404(Student, id=student_index)
+    serializer = StudentSerializer(student, many=False)
     
+    # Retrieve the serialized data
+    serialized_student = serializer.data
+    
+    # Serialize the associated Program object
+    program_serializer = ProgramSerializer(student.program)
+    serialized_program = program_serializer.data
+    
+    # Add serialized Program to the student data
+    serialized_student['program'] = serialized_program
+    
+    # Add other student details to the serialized data
+    serialized_student['level'] = student.level
+    serialized_student['year'] = student.year_enrolled
+    serialized_student['index'] = student.index
+    serialized_student['email'] = student.email
+    
+    return Response(serialized_student)
+
     
 @api_view(['GET'])
 def get_all_departments(request):
@@ -106,23 +119,35 @@ def get_all_programs(request):
         return Response(programs)
 
 
+# Todo: Implement this method to get the list of students that are associated with a program
+# @api_view(['GET'])
+# def students_in_program(request, program):
+#        if request.method == 'GET':
+#         students = Student.objects.count(program=program)
+#         serializer = StudentSerializer(students, many=True)
+
+#         # Retrieve the serialized data
+#         serialized_students = serializer.data
+
+#         # Add email and index fields to each student
+#         for student_data in serialized_students:
+#             student = Student.objects.get(id=student_data['id'])
+#             program = student.program
+#             program_data = {
+#                 'name': program.name,
+#                 'department': program.department.name
+#             }
+#             student_data['program'] = program_data
+#             student_data['email'] = student.email
+#             student_data['index'] = student.index
+
+#         # Return the updated serialized students as a response
+#         return Response(serialized_students)
+
+        
     
-@api_view(['GET'])
-def get_student(request, student_index):
-    student = get_object_or_404(Student, index=student_index)  # Or use index=student_id depending on your requirement
 
-    # Serialize the student into JSON format or use a serializer
-    serialized_student = {
-        'program': student.program,
-        'level': student.level,
-        'year': student.year_enrolled,
-        'id': student.id,
-        'index': student.index,
-        'email': student.email
-    }
 
-    # Return the serialized student as a response
-    return Response(serialized_student)
 
 @api_view(['PUT'])
 def update_student(request, student_id):
