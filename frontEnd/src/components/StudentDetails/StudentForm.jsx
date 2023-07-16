@@ -3,7 +3,7 @@ import fetchData from '../../Fetch';
 
 export default function StudentForm() {
 	const { data, isLoading, error } = fetchData(
-		'http://127.0.0.1:8000/api/program/all/',
+		'http://127.0.0.1:8000/api/programs/',
 	);
 
 	const [newStudent, setNewStudent] = useState({
@@ -67,8 +67,8 @@ export default function StudentForm() {
 	};
 
 	return (
-		<div className='card w-96 bg-neutral text-neutral-content'>
-			<div className='card-body items-center text-center'>
+		<div className='card w-96 bg-neutral text-neutral-content max-h-[30rem]'>
+			<div className='card-body items-center text-center '>
 				<h2 className='card-title font-black'>Student Form!</h2>
 				<p className='text-xs'>Create an entire class of student</p>
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import Dashboard from '../layout/MainFrame';
-import fetchData from '../Fetch';
+import Dashboard from '../../layout/MainFrame';
+import fetchData from '../../Fetch';
 
 export default function Stats({ value, title, desc, icon, className }) {
 	return (

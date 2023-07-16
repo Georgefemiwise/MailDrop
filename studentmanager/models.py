@@ -14,7 +14,7 @@ class Department(models.Model):
 class Program(models.Model):
     DIPLOMA = "DIP"
     HIGHER_NATIONAL_DIPLOMAS = "HND"
-    BACHELOR_OF_TECHNOLOGY = "BTECH"
+    BACHELOR_OF_TECHNOLOGY = "bcict"
     PROGRAMS = [
         (DIPLOMA, 'Diploma'),
         (HIGHER_NATIONAL_DIPLOMAS, 'Higher National Diplomas'),

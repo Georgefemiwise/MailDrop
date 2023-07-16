@@ -10,10 +10,9 @@ export default function Updates() {
 
 	return (
 		<div>
-			<h1 className='font-extrabold text-6xl my-3'>
-				Get student Detail
+			<h1 className='font-extrabold text-4xl my-3'>
+				List of student and their details
 			</h1>
-
 			<Table />
 		</div>
 	);
