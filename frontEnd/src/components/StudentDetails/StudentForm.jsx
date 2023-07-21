@@ -5,9 +5,9 @@ export default function StudentForm() {
 	const { data, isLoading, error } = fetchData(
 		'http://127.0.0.1:8000/api/programs/',
 	);
-
+	
 	const [newStudent, setNewStudent] = useState({
-		program: { id: '', name: '' }, // Initialize program as a nested dictionary
+		program: { abbreviation: '', name: '' },
 		level: '',
 		year_enrolled: '',
 		classTotal: '',
@@ -25,11 +25,10 @@ export default function StudentForm() {
 		const { value, text } = event.target.selectedOptions[0];
 		setNewStudent((prevStudent) => ({
 			...prevStudent,
-			program: { id: value, name: text },
+			program: { abbreviation: value, name: text },
 		}));
 	};
 
-	console.log(newStudent);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -66,23 +65,30 @@ export default function StudentForm() {
 		}
 	};
 
+	const dateEnrolled = new Date();
+	const dateEnrolledList = [
+		dateEnrolled.getFullYear(),
+		dateEnrolled.getFullYear() - 1,
+		dateEnrolled.getFullYear() - 2,
+		dateEnrolled.getFullYear() - 3,
+	];
 	return (
-		<div className='card w-96 bg-neutral text-neutral-content max-h-[30rem]'>
+		<div className='card w-full bg-neutral text-neutral-content max-h-[30rem]'>
 			<div className='card-body items-center text-center '>
-				<h2 className='card-title font-black'>Student Form!</h2>
-				<p className='text-xs'>Create an entire class of student</p>
+				<h2 className='card-title font-black text-5xl'>Student Form!</h2>
+				<p className='text-lg'>Create an entire class of student</p>
 
 				<form
 					method='post'
 					onSubmit={handleSubmit}
-					className='flex flex-col gap-2 w-full '>
+					className='flex flex-col gap-2 min-w-[30rem] '>
 					<input
 						type='text'
 						name='level'
 						value={newStudent.level}
 						onChange={handleInputChange}
 						placeholder='Level'
-						className='input input-bordered w-full max-w-xs '
+						className='input input-bordered w-full max-w-lg '
 					/>
 					<input
 						type='text'
@@ -90,29 +96,57 @@ export default function StudentForm() {
 						value={newStudent.year_enrolled}
 						onChange={handleInputChange}
 						placeholder='year enrolled'
-						className='input input-bordered w-full max-w-xs '
+						className='input input-bordered w-full max-w-lg '
 					/>
+					{/* {dateEnrolledList.map((date) => { return date + ' ' + dateEnrolled })} */}
+
+					{/* <div className='form-control flex flex-row items-center align-middle'>
+						{dateEnrolledList.map((date, index) => (
+							<label
+								className={`cursor-pointer flex border border-gray-600 p-2 ${
+									date == dateEnrolledList[0]
+										? 'ml-0'
+										: 'ml-5'
+								}`}>
+								<input
+									type='radio'
+									name='year_enrolled'
+									className='radio checked:bg-red-500'
+									value={newStudent.year_enrolled}
+									onChange={handleInputChange}
+								/>
+								<span className='ml-2'>{date}</span>
+							</label>
+						))}
+					</div> */}
+
 					<input
-						type='text'
+						type='number'
 						name='classTotal'
 						value={newStudent.classTotal}
 						onChange={handleInputChange}
 						placeholder='Class total'
-						className='input input-bordered w-full max-w-xs'
+						className='input input-bordered w-full max-w-lg'
 					/>
 
 					<select
 						name='program'
-						value={newStudent.program.id.toString()} // Convert id to a string
+						value={newStudent.program.abbreviation}
 						onChange={handleProgramChange}
-						className='select select-bordered w-full max-w-xs'>
-						<option disabled value=''>
+						className='select select-bordered w-full max-w-lg'>
+						<option
+							disabled
+							value=''
+							selected
+							className='bg-slate-200'>
 							choose a program
 						</option>
 						{data &&
 							!isLoading &&
-							data.map((item) => (
-								<option key={item.id} value={item.id}>
+							data.map((item, index) => (
+								<option
+									key={index}
+									value={item.abbreviation}>
 									{item.name}
 								</option>
 							))}
@@ -120,7 +154,7 @@ export default function StudentForm() {
 
 					<div className='card-actions '>
 						<button type='submit' className='btn btn-primary'>
-							create
+							create student
 						</button>
 					</div>
 				</form>

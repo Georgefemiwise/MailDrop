@@ -5,7 +5,7 @@ import fetchData from '../../Fetch';
 export default function Stats({ value, title, desc, icon, className }) {
 	return (
 		<>
-			<div className={`stat  border rounded-md ${className}`}>
+			<div className={`stat bg-neutral-focus  border rounded-md ${className} hover:bg-opacity-50`}>
 				<div className='stat-figure text-secondary font-extrabold '>
 					{icon}
 				</div>

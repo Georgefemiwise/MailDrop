@@ -8,3 +8,5 @@ maildrop/config.py
 maildrop\config.py
 maildrop/config.py
 maildrop/config.py
+db.sqlite3
+

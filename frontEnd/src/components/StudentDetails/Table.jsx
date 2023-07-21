@@ -8,24 +8,30 @@ export default function Table() {
 
 	return (
 		<>
-			<div className='mt-5 flex justify-center'>
+			<div className='mt-5 flex justify-center w-full'>
 				<div className='overflow-x-auto h-96'>
-					<table className='table table-pin-rows  w-10/12'>
-						<thead>
+					<table className='table-sm min-w-[80rem] text-center'>
+						<thead className='font-extrabold text-3xl'>
 							<tr>
-								<th>sn</th>
+								<th>S/N</th>
 								<th>Program</th>
 								<th>Index</th>
 								<th>Email</th>
-								<th>btn</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody
-							className={`capitalize justify-center
+							className={`capitalize 
 								${isLoading ? `loading loading-ring loading-lg` : ''}`}>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
 							{data &&
 								data.map((student, index) => (
-									<tr key={index}>
+									<tr
+										key={index}
+										className='bg-inherit hover:bg-gray-700'>
 										<td className='text-slate-500 text-opacity-50'>
 											{index + 1}
 										</td>
@@ -36,95 +42,7 @@ export default function Table() {
 
 										<td>{student.index}</td>
 
-										<td>{student.email}</td>
-
-										<th>
-											{/* The button to open modal */}
-											<label
-												htmlFor={
-													student.email
-												}
-												className='btn btn-xs'>
-												details
-											</label>
-
-											{/* Put this part before </body> tag */}
-											<input
-												type='checkbox'
-												id={student.email}
-												className='modal-toggle'
-											/>
-											<div className='modal'>
-												<div className='modal-box p-10'>
-													<h3 className='font-bold text-lg'>
-														Student
-														Details
-													</h3>
-													<p className='pt-10'>
-														<span className='mr-10 badge-lg badge badge-outline'>
-															ID:
-														</span>
-														{
-															student.id
-														}
-													</p>
-													<p className='pt-5 w-full font-extrabold'>
-														<span className='mr-10 badge-lg badge badge-outline'>
-															Index:
-														</span>
-														{
-															student.index
-														}
-													</p>
-													<p className='pt-5 w-full font-extrabold'>
-														<span className='mr-10 badge-lg badge badge-outline'>
-															Email:
-														</span>
-														{
-															student.email
-														}
-													</p>
-
-													<p className='pt-5 w-full font-extrabold'>
-														<span className='mr-10 badge-lg badge badge-outline'>
-															Program:
-														</span>
-														{
-															student
-																.program
-																.name
-														}
-													</p>
-													<p className='pt-5 w-full font-extrabold'>
-														<span className='mr-10 badge-lg badge badge-outline'>
-															Level:{' '}
-														</span>
-														{
-															student.level
-														}
-													</p>
-													<p className='pt-5 w-full font-extrabold'>
-														<span className='mr-10 badge-lg badge badge-outline'>
-															Year
-														</span>
-														Enrolled:
-														{
-															student.year_enrolled
-														}
-													</p>
-
-													<div className='modal-action'>
-														<label
-															htmlFor={
-																student.email
-															}
-															className='btn'>
-															Close!
-														</label>
-													</div>
-												</div>
-											</div>
-										</th>
+										<td className='lowercase'>{student.email}</td>
 									</tr>
 								))}
 						</tbody>

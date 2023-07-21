@@ -1,14 +1,61 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function TopNavBar() {
-  return (
+	const navigation = [
+		// {
+		// 	to: '/',
+		// 	name: 'Home',
+		// },
+		{
+			to: 'dashboard',
+			name: 'dashboard',
+		},
+		{
+			to: 'messages',
+			name: 'messages',
+		},
+
+		// {
+		// 	to: 'statistics',
+		// 	name: 'statistics',
+		// },
+		// {
+		// 	to: 'updates',
+		// 	name: 'updates',
+		// },
+		// {
+		// 	to: 'create',
+		// 	name: 'create',
+		// },
+	];
+	return (
 		<div>
-			<div className='navbar bg-base-100 flex flex-col'>
-				<div className='flex-1'>
-					<a className='cursor-pointer normal-case text-lg'>
-						MailDrop
-					</a>
+			<div className='navbar bg-base-100 flex flex-row justify-between px-10  shadow shadow-neutral'>
+				<div className='flex'>
+					<Link
+						to={'/'}
+						className='cursor-pointer normal-case text-lg'>
+						Maildrop
+					</Link>
 				</div>
+
+				<div className='navbar-center'>
+					<ul className='flex'>
+						{navigation.map((nav, index) => (
+							<li
+								key={index}
+								className='w-full hover:bg-neutral-focus  rounded-md'>
+								<Link
+									to={nav.to}
+									className='capitalize  px-5  active:bg-neutral-content'>
+									{nav.name}
+								</Link>
+							</li>
+						))}
+					</ul>
+				</div>
+
 				<div className='flex-none'>
 					<div className='dropdown dropdown-end'>
 						<label
@@ -54,32 +101,37 @@ export default function TopNavBar() {
 					<div className='dropdown dropdown-end'>
 						<label
 							tabIndex={0}
-							className='btn btn-ghost btn-circle avatar'>
-							<div className='w-10 rounded-full'>
-								<img src='/images/stock/photo-1534528741775-53994a69daeb.jpg' />
+							className='btn btn-ghost btn-circle avatar placeholder'>
+							<div className='w-10 rounded-full bg-neutral-content text-neutral '>
+								{/* <img src='/images/stock/photo-1534528741775-53994a69daeb.jpg' /> */}
+								<span className='text-xs'>AA</span>
 							</div>
+							
 						</label>
 						<ul
 							tabIndex={0}
 							className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'>
 							<li>
-								<a className='justify-between'>
+								<Link
+									to={'profile'}
+									className='justify-between'>
 									Profile
 									<span className='badge'>New</span>
-								</a>
+								</Link>
 							</li>
 							<li>
 								<a>Settings</a>
 							</li>
+							<div className='divider '></div>
 							<li>
-								<a>Logout</a>
+								<Link to={'profile/logout'}>
+									Logout
+								</Link>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			;
 		</div>
-  );
+	);
 }
-
