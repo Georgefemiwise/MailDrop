@@ -1,10 +1,8 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-
-import fetchData from '../Fetch';
-import NavBar from '../components/Navigation/NavBar';
+import React, { useContext } from 'react';
+import AuthContext from '../context/AuthContext';
 
 export default function Home() {
+	// let { name } = useContext(AuthContext);
 	return (
 		<div className='home '>
 			<header className='container hero'>
@@ -29,8 +27,8 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
+				{/* <h1>hello {name}</h1> */}
 			</header>
-			
 
 			<small className='animate animate-pulse  text-red-500'>
 				Logged in user should not have this as a navigation option

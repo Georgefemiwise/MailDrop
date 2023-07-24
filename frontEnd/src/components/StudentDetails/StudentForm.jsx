@@ -129,7 +129,7 @@ export default function StudentForm() {
 						className='input input-bordered w-full max-w-lg'
 					/>
 
-					<select
+					<select title=''
 						name='program'
 						value={newStudent.program.abbreviation}
 						onChange={handleProgramChange}

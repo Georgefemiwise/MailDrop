@@ -36,7 +36,7 @@ def create_student(request):
         if program_name:
             for index in range(1, classTotal + 1):
                 generatedEmail = f"{program_name}{str(year)[2:]}{index:03}@ttu.edu.gh"
-                print(f"Processing student with email: {generatedEmail}")
+                print(f"Processing student with email: {generatedEmail} on {index}")
                 
                 
                 if not Student.objects.filter(email=generatedEmail).exists():
@@ -51,6 +51,7 @@ def create_student(request):
                         year_enrolled=year,
                     )
                     newStudent.save()
+                    print(f"{generatedEmail} created")
 
                     if newStudent.pk is not None:
                         success_message = 'Student created successfully'
@@ -70,33 +71,6 @@ def create_student(request):
 
 
 
-
-
-
-
-
-
-
-
-# @api_view(['POST'])
-# def create_student(request):
-#     serializer = StudentSerializer(data=request.data)
-#     if serializer.is_valid():
-#         # Extract data from the serializer
-#         level = serializer.validated_data.get('level')
-#         year = serializer.validated_data.get('year_enrolled')
-#         classTotal = request.data.get('classTotal')
-#         program_data = serializer.validated_data.get('program')
-#         program_name = program_data.get('abbreviation') if program_data else None
-#         int(classTotal)
-#         print(level, type(classTotal), program_name, year)
-
-#         # ... Your existing code ...
-
-#         success_message = 'Student created successfully'
-#         return Response({'message': success_message}, status=status.HTTP_201_CREATED)
-#     else:
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

@@ -32,20 +32,3 @@
 # # django-admin startproject maildrop
 # # cd maildrop
 # # code .
-
-class Parent:
-    def __init__(self,name, age):
-        self.name = name
-        self.age = age
-        
-    def getName(self):
-        return self.name
-    
-    def getAge(self):
-        return self.age
-        
-        
-file = open("my_new_file.txt","a")
-for i in range(20):
-    
-    file.write(str(i))

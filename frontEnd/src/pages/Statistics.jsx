@@ -13,7 +13,7 @@ export default function Statistics() {
 
 	return (
 		<div className='container p-3'>
-			<h1 className="h1 text-4xl my-4 font-black underline underline-offset-8 text-center">Student Statistics</h1>
+			<h1 className="h1 text-4xl my-4 font-black  text-center">Student Statistics</h1>
 			<div className='flex pt-2 gap-1 '>
 				<Stats
 					title={'Total Student'}

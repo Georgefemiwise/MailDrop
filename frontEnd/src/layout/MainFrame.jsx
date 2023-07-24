@@ -2,13 +2,13 @@ import React from 'react';
 
 import { Outlet } from 'react-router-dom';
 import SideBarFrame from './SideBarFrame';
-import TopNavBar from '../components/Navigation/TopNavBar';
+import NavBar from '../components/Navigation/NavBar';
 
 export default function MainFrame() {
 	return (
 		<>
-			<div className='flex flex-col sm:flex-ro flex-wrap sm:flex-nowrap flex-grow h-screen '>
-				<TopNavBar/>
+			<div className='flex flex-col sm:flex-ro flex-wrap sm:flex-nowrap flex-grow h-screen text-sm'>
+				<NavBar />
 				{/* <SideBarFrame /> */}
 				<main role='main' className='w-full flex-grow pt-1 px-3'>
 					<Outlet />
@@ -27,10 +27,10 @@ export default function MainFrame() {
 					</div>
 				</div> */}
 			</div>
-			<footer className='bg-black mt-auto'>
+			{/* <footer className='bg-black mt-auto'>
 				<div className='p-5 text-white mx-auto'>
 					<h1 className='text-2xl'>Footer</h1>
-					 <div className='flex'>
+					<div className='flex'>
 						<div className='flex-grow flex flex-col'>
 							<a href='/#home'>Boom</a>
 							<a href='#'>Boom</a>
@@ -54,12 +54,13 @@ export default function MainFrame() {
 							<a href='#'>Boom</a>
 							<a href='#'>Boom</a>
 						</div>
-					</div> *
+					</div>{' '}
+					*
 					<div className='text-right text-xs py-4'>
 						<a href=''>&copy;2021 Someco Inc.</a>
 					</div>
 				</div>
-			</footer>
+			</footer> */}
 		</>
 	);
 }

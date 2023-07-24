@@ -25,7 +25,7 @@ export default function CreateStudent() {
 
 	return (
 		<div className='flex gap-5'>
-			<div className='card  w-[40rem] h-[40rem] overflow  bg-base-100 shadow-xl'>
+			{/* <div className='card  w-[40rem] h-[40rem] overflow  bg-base-100 shadow-xl'>
 				<div className='card-body'>
 					<form onSubmit={handleSubmit}>
 						<input
@@ -50,9 +50,9 @@ export default function CreateStudent() {
 
 					<Form />
 				</div>
-			</div>
+			</div> */}
 
-			{/* <StudentForm /> */}
+			<StudentForm />
 		</div>
 	);
 }
