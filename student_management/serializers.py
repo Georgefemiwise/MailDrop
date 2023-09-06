@@ -8,7 +8,7 @@ class ProgramSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Program
-        fields = ['name', 'department', 'abbreviation']
+        fields = "__all__"
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -16,7 +16,6 @@ class StudentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Student
-        fields = ['id', 'program', 'level', 'year_enrolled', 'name']
-        extra_kwargs = {
-            'program': {'required': False},
-        }
+        fields = "__all__"
+        
+        

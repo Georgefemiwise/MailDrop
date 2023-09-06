@@ -40,12 +40,12 @@ export default function Profile() {
 							</span>
 							11/11/1111
 						</h3>
-					</div>
+					{/* </div>
 
 					<div className='font-medium capitalize my-6'>
 						contact
 					</div>
-					<div className='bg-neutral-focus rounded-md py-5 px-8 my-2'>
+					<div className='bg-neutral-focus rounded-md py-5 px-8 my-2'> */}
 						<h3 className='label'>
 							<span className='capitalize font-medium'>
 								phone
@@ -66,6 +66,9 @@ export default function Profile() {
 						</h3>
 					</div>
 				</div>
+
+
+
 				<div className='w-full'>
 					<div className='bg-neutral-focus rounded-md py-5 px-8 my-2 capitalize'>
 						<div className='avatar placeholder w-full flex justify-center '>

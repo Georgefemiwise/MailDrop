@@ -3,9 +3,14 @@ from .models import *
 
 
 
+@admin.register(Faculty)
+class FacultyAdmin(admin.ModelAdmin):
+    list_display =['faculty_name', 'updated_at', 'created_at',]
+	
+
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
-    list_display =['name','updated_at','created_at',]
+    list_display =['department_name','updated_at','created_at',]
 	
 
 
@@ -16,7 +21,7 @@ class StudentAdmin(admin.ModelAdmin):
 
 @admin.register(Program)
 class ProgramAdmin(admin.ModelAdmin):
-	list_display=['name', 'department', 'updated_at', 'created_at',]
+	list_display=['program_name', 'department', 'updated_at', 'created_at',]
 
 
 
