@@ -1,5 +1,4 @@
 from pathlib import Path
-
 import os
 from .config import *
 from datetime import timedelta
@@ -33,12 +32,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'account',
-    'rest_framework_simplejwt',
-    'student_management',
     'rest_framework',
+    'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-     "corsheaders",
+    'account',
+    'student_manager',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {

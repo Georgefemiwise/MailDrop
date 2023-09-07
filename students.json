@@ -1,0 +1,902 @@
+[
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23000@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23001@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23002@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23003@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "07ict23004@ttu.edu.gh",
+        "program_name": "hnd",
+        "full_index": "07/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23000@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23001@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23002@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23003@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "bcict23004@ttu.edu.gh",
+        "program_name": "btech",
+        "full_index": "bc/ict/23/004",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23000@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/000",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23001@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/001",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23002@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/002",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23003@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/003",
+        "graduation_date": "2027"
+    },
+    {
+        "full_email": "pdict23004@ttu.edu.gh",
+        "program_name": "diptech",
+        "full_index": "pd/ict/23/004",
+        "graduation_date": "2027"
+    }
+]
