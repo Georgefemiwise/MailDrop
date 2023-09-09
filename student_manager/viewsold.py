@@ -169,3 +169,7 @@ def delete_student(request, student_id):
 
 
 
+
+
+test = 'hi my name is '.format('gee')
+print(test)

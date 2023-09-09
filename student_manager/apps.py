@@ -8,5 +8,7 @@ class StudentManagerConfig(AppConfig):
     def ready(self):
         print("starting scheduler")
         from . auto import student_creater
-        # student_creater.start()
+
+        # start the process from the beginning of running the server
+        student_creater.start()
         
