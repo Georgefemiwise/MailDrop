@@ -13,61 +13,6 @@ from .serializers import StudentSerializer, ProgramSerializer
 
 
 
-
-@api_view(['POST'])
-def create_student(request):
-    serializer = StudentSerializer(data=request.data)
-    if serializer.is_valid():
-         # Extract data from the serializer
-        level = serializer.validated_data.get('level')
-        year = serializer.validated_data.get('year_enrolled')
-        classTotal = int(request.data.get('classTotal'))
-        program_data = serializer.validated_data.get('program')
-        program_name = program_data.get('abbreviation') if program_data else None
-
-        # convert class to interger
-        classTotal = int(classTotal) 
-      
-        thisYear = datetime.now().year
-
-        if year and year > thisYear:
-            error_message = 'Error: year {} is greater than {}'.format(year, thisYear)
-            return Response({'error': error_message}, status=400)
-
-        if program_name:
-            for index in range(1, classTotal + 1):
-                generatedEmail = f"{program_name}{str(year)[2:]}{index:03}@ttu.edu.gh"
-                print(f"Processing student with email: {generatedEmail} on {index}")
-                
-                
-                if not Student.objects.filter(email=generatedEmail).exists():
-                    program = get_object_or_404(Program, abbreviation__iexact=program_name)
-                    print(f"Creating student with email: {generatedEmail}")
-
-                    newStudent = Student(
-                        index=f"{index:03}", #leading zero for index numbers
-                        program=program,
-                        email=generatedEmail.lower(),
-                        level=level,
-                        year_enrolled=year,
-                    )
-                    newStudent.save()
-                    print(f"{generatedEmail} created")
-
-                    if newStudent.pk is not None:
-                        success_message = 'Student created successfully'
-                        # return Response({'message': success_message}, status=201)
-
-            error_message = 'Error saving the student'
-            # return Response({'error': error_message}, status=500)
-
-        error_message = 'Program data is required.'
-        return Response({'error': error_message}, status=400)
-
-    return Response(serializer.errors, status=400)
-
-
-
             
   
 @api_view(['GET'])
@@ -97,14 +42,14 @@ def get_student(request, student_index):
 @api_view(['GET'])
 def get_all_departments(request):
     if request.method == 'GET':
-        departments = Department.objects.all().values('id', 'name')
+        departments = Department.objects.all()
         return Response(departments)
     
     
 @api_view(['GET'])
 def get_all_programs(request):
     if request.method == 'GET':
-        programs = Program.objects.all().values('id', 'name', 'abbreviation')
+        programs = Program.objects.all()
         return Response(programs)
 
 
@@ -168,8 +113,3 @@ def delete_student(request, student_id):
     return Response({'error': 'Invalid request method'})
 
 
-
-
-
-test = 'hi my name is '.format('gee')
-print(test)
