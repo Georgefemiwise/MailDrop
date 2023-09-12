@@ -12,9 +12,9 @@ def start():
     scheduler = BackgroundScheduler()
 
     # add function to run in the background and set timer ['interval', 'date']
-    scheduler.add_job(create_multiple_students, "interval", minutes = 2)
+    scheduler.add_job(create_multiple_students, "interval", seconds = 5)
 
-    # start the process
+    # # start the process
     scheduler.start()
 
 
@@ -30,35 +30,66 @@ def create_multiple_students():
     # range of student to be generated
     range_of_students = 3
 
-    # get programs from the database
+    # get department from the database
+    list_of_departments = Department.objects.all()
     list_of_programs = Program.objects.all()
 
     print("Creating students...")
 
-    for program in list_of_programs:
-        # getting the list of programs
-        get_program = Program.objects.get(program_name = program)
+    cout = 0
+    for department in list_of_departments:
+        
+        # # getting the list of departments
+        get_department_abbreviation = department.department_abbreviation
+        
+        for program in list_of_programs:
+            
+            # # extracting program abbreviation
+            program_abbreviation = program.program_abbreviation        
 
-        # extracting program abbreviation
-        program_abbreviation = get_program.program_abbreviation
+            for index in range(1, range_of_students + 1):
+                      
+                create_single_student(
+                    program_name = program.program_name, 
+                    program_abbreviation = program_abbreviation, 
+                    department_abbreviation = get_department_abbreviation, 
+                    index_number = index, 
+                    year_enrolled = current_year
+                )
+                
+                cout += index
+    
+    print(f"{cout} students created!")
+    return True
 
-        # extracting related department
-        department = get_program.department.department_name
-
-        for index in range(1, range_of_students + 1):
-            create_single_student(program_name = program, program_abbreviation = program_abbreviation,
-                                  department_name = department, index_number = index, year_enrolled = current_year)
 
 
-def create_single_student(program_name: str, index_number: int, year_enrolled: str, program_abbreviation: str,
-                          department_name: str):
+
+
+
+
+
+
+
+
+
+
+import json
+def create_single_student(program_name: str, index_number: int, year_enrolled: str, program_abbreviation: str, department_abbreviation: str):
     """
     Creates single student instance and the save to the database.
+    
+    
+    program_abbreviation ->  this abbreviation maps to a programs, it purpose is to give the index number an abreviation to work with. 
+            e.g [BTECH:bc, HND:07, DIPTECH:pd]
+            
+        department_abbreviation -> maps to departmental abbreviation [] 
+    
     """
 
     # get index number 
     full_index = generate_student_index(program = program_name, index = index_number, year = year_enrolled,
-                                        program_abbreviation = program_abbreviation, department = department_name)
+                                        program_abbreviation = program_abbreviation, department_abbreviation = department_abbreviation)
 
     # gets email address
     full_email = generate_email(full_index = full_index)
@@ -71,14 +102,22 @@ def create_single_student(program_name: str, index_number: int, year_enrolled: s
     str_program_name = get_object_or_404(Program, program_name = program_name)
 
     # Create a new instance for the current student
-    new_student = Student.objects.create(
-        email = full_email,
-        index = full_index,
-        program = str_program_name,
-        year_enrolled = int(year_enrolled),  # Convert the current year to an integer
-        # Other fields are set to default values, e.g., level, isInSchool, etc.
-    )
-    new_student.save()
+    # new_student = Student.objects.create(
+    #     email = full_email,
+    #     index = full_index,
+    #     program = str_program_name,
+    #     year_enrolled = int(year_enrolled),  # Convert the current year to an integer
+    #     # Other fields are set to default values, e.g., level, isInSchool, etc.
+    # )
+    # new_student.save()
+    student = { 
+               'email': full_email,
+                'index' : full_index,
+                'program' :str( str_program_name),
+                'graduation' :graduation_date,
+                'year_enrolled' : int(year_enrolled),
+    }
+    print(json.dumps(student, indent=3))
 
 
 def generate_email(full_index: str):
@@ -97,7 +136,7 @@ def generate_email(full_index: str):
     return None
 
 
-def generate_student_index(program: str, index: int, year: str, program_abbreviation: str, department: str):
+def generate_student_index(program: str, index: int, year: str, program_abbreviation: str, department_abbreviation: str):
     """
     Generate a student index based on the program type, index, year, program abbreviation, and department abbreviation.
 
@@ -105,10 +144,11 @@ def generate_student_index(program: str, index: int, year: str, program_abbrevia
         str: The generated student index as a string.
     """
     str_program = str(program)
+    print(str_program)
 
     if str_program != 'hnd':
         # index for BTECH, DIPTECH, etc.
-        formatted_index = f"{program_abbreviation}/{department}/{year[2:]}/{index:03}"
+        formatted_index = f"{program_abbreviation}{department_abbreviation}{year[2:]}{index:03}"
         return formatted_index
 
     else:
