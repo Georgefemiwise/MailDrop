@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 
 from rest_framework.decorators import api_view
@@ -16,10 +17,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         # Add custom claims
         token['username'] = user.username
-        
-      
+
         return token
+
 
 class MyTokenObtainPairview(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
-    
