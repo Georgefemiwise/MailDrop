@@ -7,8 +7,8 @@ class StudentManagerConfig(AppConfig):
     
     def ready(self):
         print("starting scheduler")
-        from . auto import student_creater
+        from . base_creator import create_multiple_student
 
         # start the process from the beginning of running the server
-        student_creater.start()
+        create_multiple_student.start_creation()
         
