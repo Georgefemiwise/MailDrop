@@ -37,12 +37,19 @@ export default function Table() {
 										</td>
 
 										<td>
-											{student.program.name}
+											{
+												student.program
+													.programName
+											}
 										</td>
 
-										<td>{student.index}</td>
+										<td>
+											{student.student.index}
+										</td>
 
-										<td className='lowercase'>{student.email}</td>
+										<td className='lowercase'>
+											{student.student.email}
+										</td>
 									</tr>
 								))}
 						</tbody>

@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import *
 
 
@@ -14,7 +15,8 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'index', 'level', 'year_enrolled', 'program', 'updated_at', 'created_at', ]
+    list_display = ["index", "email", "isInSchool", "year_enrolled", "graduation_date", "level", "program", ]
+    list_display_links = ["index"]
     list_filter = ['email', 'index', 'level']
     list_per_page = 200
 

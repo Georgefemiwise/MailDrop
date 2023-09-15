@@ -3,23 +3,19 @@ r"""create a new student and it's corresponding details
 ["email", "index", "program", "graduation", "year_enrolled"]"""
 
 import json
-
 from django.shortcuts import get_object_or_404
-
-from ..models import Program
+from ..models import Program, Student
 
 
 def create_single_student(program_name: str, index_number: int, year_enrolled: str, program_abbreviation: str,
                           department_abbreviation: str):
     r"""
     Creates single student instance and the save to the database.
-    
-    
+
     program_abbreviation ->  this abbreviation maps to a programs, its purpose is to give the index number an
     abbreviation to work with. e.g [BTECH:bc, HND:07, DIPTECH:pd]
-            
-        department_abbreviation -> maps to departmental abbreviation [] 
-    
+
+        department_abbreviation -> maps to departmental abbreviation []
     """
 
     # get index number 
@@ -37,30 +33,31 @@ def create_single_student(program_name: str, index_number: int, year_enrolled: s
     # get relative program name
     str_program_name = get_object_or_404(Program, program_name = program_name)
 
-    # Create a new instance for the current student
+    # # Create a new instance for the current student
     # new_student = Student.objects.create(
     #     email = full_email,
     #     index = full_index,
     #     program = str_program_name,
-    #     year_enrolled = int(year_enrolled),  # Convert the current year to an integer
+    #     year_enrolled = int(year_enrolled),  
+    #     graduation_date= graduation_date
     #     # Other fields are set to default values, e.g., level, isInSchool, etc.
     # )
     # new_student.save()
-    student = {
-        'email': full_email,
-        'index': full_index,
-        'program': str(str_program_name),
-        'graduation': graduation_date,
-        'year_enrolled': int(year_enrolled),
-    }
-    print(json.dumps(student, indent = 3))
+    # student = {
+    #     'email': full_email,
+    #     'index': full_index,
+    #     'program': str(str_program_name),
+    #     'graduation': graduation_date,
+    #     'year_enrolled': int(year_enrolled),
+    # }
+    # print(json.dumps(student, indent = 3))
 
 
 def generate_email(full_index: str):
     """ Generating email address for student provided from full index number. 
     returns:
-        str: full email address.
-    """
+        str: full email address."""
+
     if full_index is not None:
         # Remove forward slashes from the index
         index = full_index.replace('/', '')

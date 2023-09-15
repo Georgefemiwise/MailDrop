@@ -18,21 +18,32 @@ def get_all_students(request):
 
         # Retrieve the serialized data
         serialized_students = serializer.data
-
-        # Add email and index fields to each student
+        
+        list_students = []
         for student_data in serialized_students:
-            student = Student.objects.get(id = student_data['id'])
-            program = student.program
-            program_data = {
-
-                'abbreviation': program.program_abbreviation,
-                'program_name': program.program_name,
-                'department': program.department.department_name,
-                'faculty': program.department.faculty.faculty_name,
+    
+            jsonStudent = {
+                "student": {
+                    "id": student_data['id'],
+                    "index": student_data["index"],
+                    "email": student_data["email"],
+                },
+                "status": {
+                    "level": student_data["level"],
+                    "inSchool": student_data["isInSchool"],
+                    "yearEnrollment": student_data["year_enrolled"],
+                    "graduation": student_data["graduation_date"],
+                },
+                "program": {
+                    "programName": student_data["program"]["program_name"],
+                    "departmentName": "departmentName",
+                    "facultyName": "facultyName",
+                },
             }
-            student_data['program'] = program_data
-            student_data['email'] = student.email
-            student_data['index'] = student.index
+             
+            list_students.append(jsonStudent)
 
-        # Return the updated serialized students as a response
-        return Response(serialized_students)
+        return Response(list_students)
+    
+    
+    

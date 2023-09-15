@@ -7,7 +7,7 @@ class ProgramSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Program
-        fields = "__all__"
+        fields = ["program_name", "program_abbreviation", "department", ]
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -15,4 +15,5 @@ class StudentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Student
-        fields = "__all__"
+        fields = ["id", "index", "email", "isInSchool", "year_enrolled", "graduation_date", "level", "program",]
+    

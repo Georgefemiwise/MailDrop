@@ -1,6 +1,9 @@
 from datetime import datetime
 from django.db import models
 
+current_year = datetime.year
+
+
 
 class Faculty(models.Model):
     faculty_name = models.CharField(max_length = 30, blank = True)
@@ -38,19 +41,15 @@ class Department(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
-        return f"{self.department_name[0].upper() + self.department_name[1:]} Department"
+        return f"{self.department_name.capitalize()} department"
 
 
 class Student(models.Model):
-    name = models.CharField(max_length = 50, blank = True, default = '')
     index = models.CharField(max_length = 15, blank = True)
-
     email = models.CharField(max_length = 23, blank = True)
     isInSchool = models.BooleanField(default = True)
-
     year_enrolled = models.IntegerField(default = 2023)
     graduation_date = models.IntegerField(default = 0000)
-
     level = models.IntegerField(default = 100)
     program = models.ForeignKey(Program, on_delete = models.CASCADE, null = True)
 
