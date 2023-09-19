@@ -4,16 +4,13 @@ this_year = 2024
 level = 100
 
 # Calculate the number of years the student has been in school
-years_in_school = this_year - enrol
+if (this_year - enrol) >= 1:
+    level = (this_year - enrol) * 100  # Increase the level by the number of years in school
 
-# Adjust the level based on the years in school
-if years_in_school >= 1:
-    level = years_in_school * 100  # Increase the level by the number of years in school
 
-# Make sure the level does not exceed a certain maximum level (if needed)
-max_level = 400  # Adjust this as necessary
-if level > max_level:
-    level = max_level
+# Adjust this as necessary
+if level > (400):
+    level = 400
 
 print("Updated Level:", level)
 

@@ -1,9 +1,8 @@
-from typing import Any
-
 from ..models import Student
 from datetime import datetime
 
-current_year = datetime.now().strftime('%Y')
+
+current_year = datetime.now().year
 
 
 def _update_student_():
@@ -25,17 +24,13 @@ def update_specialization():
 def update_level():
     r"""update level of students specifically from the program they offer."""
 
-    this_year = datetime.now().year
-
     # get all student
     students = Student.objects.all()
 
     for student in students:
-        # calculate the year a student enrolled in school, and keep the difference.
-        years_in_school = this_year - student.year_enrolled
-
+    
         # increment student level
-        new_level = student.level * years_in_school
+        new_level = student.level * (current_year - student.year_enrolled)
 
         if student.program == 'diptech':
             max_level = 200

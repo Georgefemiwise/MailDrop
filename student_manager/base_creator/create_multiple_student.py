@@ -63,5 +63,4 @@ def create_multiple_students():
 
                 count += index
 
-    # print(f"{count} students created!")
-    return True
+   
