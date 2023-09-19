@@ -1,7 +1,7 @@
 .vscode/settings.json
 test.py
 test.html
-.env
+# .env
 .vscode
 env
 maildrop/config.py

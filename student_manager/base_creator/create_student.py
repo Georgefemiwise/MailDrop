@@ -19,16 +19,13 @@ def create_single_student(program_name: str, index_number: int, year_enrolled: s
     """
 
     # get index number 
-    full_index = generate_student_index(program = program_name, index = index_number, year = year_enrolled,
-                                        program_abbreviation = program_abbreviation,
-                                        department_abbreviation = department_abbreviation)
+    full_index = generate_student_index(program = program_name, index = index_number, year = year_enrolled,program_abbreviation = program_abbreviation,department_abbreviation = department_abbreviation)
 
     # gets email address
     full_email = generate_email(full_index = full_index)
 
     # calculates date for graduation
-    graduation_date = calculate_graduation_year(program = program_name,
-                                                current_year = year_enrolled)  # Correct the variable name here
+    graduation_date = calculate_graduation_year(program = program_name, current_year = year_enrolled)  
 
     # get relative program name
     str_program_name = get_object_or_404(Program, program_name = program_name)
@@ -43,14 +40,15 @@ def create_single_student(program_name: str, index_number: int, year_enrolled: s
     #     # Other fields are set to default values, e.g., level, isInSchool, etc.
     # )
     # new_student.save()
-    # student = {
-    #     'email': full_email,
-    #     'index': full_index,
-    #     'program': str(str_program_name),
-    #     'graduation': graduation_date,
-    #     'year_enrolled': int(year_enrolled),
-    # }
-    # print(json.dumps(student, indent = 3))
+    student = {
+        'email': full_email,
+        'index': full_index,
+        'program': str(str_program_name),
+        'graduation': graduation_date,
+        'year_enrolled': int(year_enrolled),
+        'faculty':str_program_name.de
+    }
+    print(json.dumps(student, indent = 3))
 
 
 def generate_email(full_index: str):
@@ -69,14 +67,11 @@ def generate_email(full_index: str):
     return None
 
 
-def generate_student_index(program: str, index: int, year: str, program_abbreviation: str,
-                           department_abbreviation: str):
-    """
-    Generate a student index based on the program type, index, year, program abbreviation, and department abbreviation.
-
+def generate_student_index(program: str, index: int, year: str, program_abbreviation: str,department_abbreviation: str):
+    """Generate a student index based on the program type, index, year, program abbreviation, and department abbreviation.
     Returns:
-        str: The generated student index as a string.
-    """
+        str: The generated student index as a string."""
+
     str_program = str(program)
 
     if str_program != 'hnd':
