@@ -1,12 +1,2 @@
-.vscode/settings.json
-test.py
-test.html
-# .env
-.vscode
-env
-maildrop/config.py
-maildrop\config.py
-maildrop/config.py
-maildrop/config.py
-db.sqlite3
-.idea
+student_data.json
+__pycache__/
