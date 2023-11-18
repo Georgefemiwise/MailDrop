@@ -66,8 +66,13 @@ def generate_student_data(course, program, num_students=10):
 
 if __name__ == "__main__":
     program = "btech"
-    program = "hnd"
-    program = 'diptech'
+    # program = "hnd"
+    # program = 'diptech'
     course = "ict"
 
     generate_student_data(course=course, program=program)
+
+    # just to be certain let the program create the student first then sun it
+    time.sleep(2)  
+
+
