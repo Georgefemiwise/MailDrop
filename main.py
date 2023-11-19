@@ -1,24 +1,16 @@
-
 import time
 import json
+from src.email.send_email import email_sender
 from src.functions.constants import *
 from src.functions.builder import SingleStudentBuilder
 
-# from src.functions.create_student_data import create_single_student
-
-
-# # todo: implement a better way to assign faculty to students
+# TODO implement a better way to assign faculty to students
 # def assign_faculty_and_department(program):
 #     faculty = {'btech': 'bc'}
 #     return faculty
 
 
-# def get_course():
-#     departments = {'btech': 'ict', 'diptech': 'ict'}
-#     return departments
-
-
-def generate_student_data(course, program, num_students=10):
+def generate_student_data(course, program, num_students=200):
     """
     Generate data for multiple students from a given course and program,
     assuming that the students are in the same class.
@@ -26,7 +18,7 @@ def generate_student_data(course, program, num_students=10):
     Parameters:
     - course (str): The course in which the students are enrolled.
     - program (str): The academic program of the students.
-    - num_students (int, optional): The number of students to generate data for. Default is 10.
+    - num_students (int, optional): The number of students to generate data for. Default is 200.
 
     The function creates student data based on the provided course and program,
     generating unique details such as index numbers, academic years, email addresses,
@@ -68,11 +60,15 @@ if __name__ == "__main__":
     program = "btech"
     # program = "hnd"
     # program = 'diptech'
+
     course = "ict"
 
+    # Start genearion
     generate_student_data(course=course, program=program)
 
+    print("Sending emails...")
     # just to be certain let the program create the student first then sun it
-    time.sleep(2)  
+    time.sleep(2)
 
-
+    #
+    email_sender()

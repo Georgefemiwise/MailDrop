@@ -1,7 +1,7 @@
 import time
 
-from StudentRecorder import StudentRecord
-from constants import PROGRAM_DICTIONARY
+from .StudentRecorder import StudentRecord
+from .constants import PROGRAM_DICTIONARY
 
 
 class SingleStudentBuilder(StudentRecord):

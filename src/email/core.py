@@ -39,6 +39,6 @@ def sender(
             smtp.starttls()  # Start a TLS/SSL secured connection
             smtp.login(sender_email, sender_password)
             smtp.sendmail(sender_email, recipient_email, message.as_string())
-        print("Email with image sent successfully")
+        print("Email sent successfully")
     except smtplib.SMTPException as e:
         print("Email sending failed:", e)
