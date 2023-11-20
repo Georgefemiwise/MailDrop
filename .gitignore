@@ -1,3 +1,7 @@
 student_data.json
 __pycache__/
 .env
+
+# msg file
+src/email/messages.txt
+messages.txt
