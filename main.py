@@ -1,7 +1,7 @@
 import time
 import json
 from src.email.send_email import email_sender
-from src.functions.constants import *
+from src.constants import *
 from src.functions.builder import SingleStudentBuilder
 
 # TODO implement a better way to assign faculty to students
@@ -29,7 +29,6 @@ def generate_student_data(course, program, num_students=200):
     """
 
     students_data = []
-    print("Processing...")
 
     for counter in range(1, num_students + 1):
         student = SingleStudentBuilder(
@@ -46,29 +45,37 @@ def generate_student_data(course, program, num_students=200):
                 "program": student.program,
                 "email": student.generate_email(),
                 "graduation": student.graduation_year(),
-                "isInSchool": True,
+                # "isInSchool": True,
             }
         )
 
     with open(FILENAME, "w") as f:
         json.dump(students_data, f, indent=4)
 
-    print("Process completed successfully!")
+        # close the open file
+        f.close()
+
+
+def total_student_records():
+    '''Get the total count of student records'''
+    path = "src/data/student_data.json"
+    with open(path, "r") as f:
+        data = json.load(f)
+        return len(data)
 
 
 if __name__ == "__main__":
-    program = "btech"
-    # program = "hnd"
-    # program = 'diptech'
-
-    course = "ict"
-
     # Start genearion
-    generate_student_data(course=course, program=program)
+    print("Generating Student records...")
 
-    print("Sending emails...")
+    for program in PROGRAMS:
+        generate_student_data(course=COURSE, program=program)
+
+    print(f"Generated {total_student_records()} student records successfully!")
+
     # just to be certain let the program create the student first then sun it
-    time.sleep(2)
+    time.sleep(1)
+    print("Sending emails...")
 
-    #
-    email_sender()
+    # call to send
+    # email_sender()

@@ -1,9 +1,10 @@
 import json
-from src.functions.constants import FILENAME, CURRENT_YEAR
+from src.constants import FILENAME, CURRENT_YEAR
 
 
 def update_is_in_school():
     """Update the is_in_school attribute of the student"""
+    
     # Read the data from the JSON file
     with open(FILENAME, "r") as file:
         data = json.load(file)

@@ -1,7 +1,6 @@
 import time
-
 from .StudentRecorder import StudentRecord
-from .constants import PROGRAM_DICTIONARY
+from ..constants import PROGRAM_ABBREVIATION
 
 
 class SingleStudentBuilder(StudentRecord):
@@ -41,12 +40,13 @@ class SingleStudentBuilder(StudentRecord):
         Generate an email address for the student based on the program, course, and index.
         """
 
-        program_abbr = PROGRAM_DICTIONARY[self.program]
-        course_code = "ict" if self.program != "hnd" else "000"
+        program_abbr = PROGRAM_ABBREVIATION[self.program]
+        course_code = "ict" if self.program != "hnd" else "000"  #
         extension = f"{self.index:03}@ttu.edu.gh"
 
         if self.program == "hnd":
             return f"{program_abbr}{self.year_enrolled[2:]}{course_code}{extension}"
+        
         else:
             return f"{program_abbr}{course_code}{self.year_enrolled[2:]}{extension}"
 
@@ -54,17 +54,17 @@ class SingleStudentBuilder(StudentRecord):
         """
         Calculate the expected graduation year for the student.
         Returns:
-        - str: The graduation year.
+        - str: The graduation year. Default 4 years.
         """
 
-        int_date = int(self.year_enrolled)
-
         if self.program == "diptech":
-            return str(2 + int_date)
+            return str(2 + int(self.year_enrolled))
+
         elif self.program == "hnd":
-            return str(3 + int_date)
+            return str(3 + int(self.year_enrolled))
+
         else:
-            return str(4 + int_date)
+            return str(4 + int(self.year_enrolled))
 
     def generate_index_number(self):
         """
@@ -73,10 +73,11 @@ class SingleStudentBuilder(StudentRecord):
         - str: The index number.
         """
 
-        program_abbr = PROGRAM_DICTIONARY[self.program]
+        program_abbr = PROGRAM_ABBREVIATION[self.program]
 
         if self.program != "hnd":
             return f"{program_abbr}{self.course}{self.year_enrolled[2:]}{int(self.index):03}"
+        
         else:
             year_code = self.year_enrolled[2:]
             return f"{program_abbr}{year_code:05}{self.index:03}"
