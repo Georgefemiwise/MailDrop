@@ -1,17 +1,5 @@
-Subject: Exciting Python Scripting Project – Let's Collaborate!
+Subject: Join Our Email Generation Project!
 
-Hi [Course Mate's Name],
+Hey Friend...
 
-Hope you're well! I've been revising a Python codebase for a while now and thought you'd be a great addition to the project.
 
-Details:
-- **GitHub Repository:** [MailDrop](https://github.com/Georgefemiwise/MailDrop/tree/scripted)
-
-I believe your expertise could significantly contribute to the project's success, and it's a fantastic opportunity for us to enhance our Python skills together.
-
-Feel free to check out the project on GitHub. Your input could make a real difference. If you have any questions or ideas, let's discuss!
-
-Looking forward to the possibility of collaborating with you.
-
-Best,
-[Your Full Name]
