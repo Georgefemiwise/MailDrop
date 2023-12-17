@@ -1,17 +1,14 @@
-.vscode/settings.json
-test.py
-test.html
+# .gitignore
+
+
 # .env
 .vscode
-env
-maildrop/config.py
-maildrop\config.py
-maildrop/config.py
-maildrop/config.py
-db.sqlite3
+.venv
 .idea
 
-# .gitignore
+
+db.sqlite3
+
 __pycache__/
 *.pyc
 *.pyo
