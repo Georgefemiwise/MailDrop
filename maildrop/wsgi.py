@@ -14,3 +14,6 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'maildrop.settings')
 
 application = get_wsgi_application()
+
+# vercel stuff
+app = application
