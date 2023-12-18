@@ -1,0 +1,16 @@
+<!-- student_manager/templates/hello.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Students</title>
+</head>
+<body>
+    <h1>Hello Students</h1>
+    <ul>
+        {% for student in students %}
+            <li>{{ student }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
