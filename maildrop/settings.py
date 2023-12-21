@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # third party libery
     "rest_framework",
+    
     # installed apps
     "student_manager",
 ]
