@@ -30,23 +30,28 @@ def is_email_address_exists(index):
     return False
 
 
-def generate_email(program:str, index, year, course):
+def generate_email(program: str, index, year, course):
     """
-    Generate the unique index number for the student.
+    Generate the unique index number for the student's email.
+
+    Args:
+        program (str): The program code, e.g., "bc" or "pd".
+        index: The student's index number.
+        year: The year of enrollment.
+        course: The course code.
+
+    Returns:
+        str: The generated unique email for the student.
     """
-    program =program.lower()
+    # Convert program code to lowercase for consistency
+    program = program.lower()
 
-    program_abbr = program
-    
-
-    if( program == "bc"):
-        generated_email = f"{program_abbr}{course}{year[2:]}{int(index):03}"
-        print(generated_email)
-        return generate_email
-
-    else:
-        year_code = year[2:]
-        generated_email = f"{program_abbr}{year_code:05}{index:03}"
+    if program in ("bc", "pd"):
+        # For "bc" or "pd" programs
+        generated_email = f"{program}{course}{year[2:]}{int(index):03}"
         return generated_email
-
-
+    else:
+        # For other programs
+        year_code = year[2:]
+        generated_email = f"{program}{year_code:05}{index:03}"
+        return generated_email

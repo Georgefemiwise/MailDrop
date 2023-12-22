@@ -2,22 +2,27 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .utils import get_key_by_value, is_email_address_exists
+from .utils import generate_email, get_key_by_value, is_email_address_exists
 from .models import Student
 from .serializers import StudentSerializer
 
 
 # major school programs
-PROGRAMS = {"BTECH": "BC", "DIPTECH": "DP", "HND": "07"}
+PROGRAMS: dict = {"BTECH": "BC", "DIPTECH": "DP", "HND": "07"}
 COURCES = {"computer science": "ict"}
 
 
 @api_view(["GET"])
 def all_student(request):
+    """
+    Retrieves all students from the database, serializes the data using a serializer, and
+    returns the serialized data as a response.
+    """
+
     if request.method == "GET":
         # Retrieve all students from the database
         students = Student.objects.all()
-        print(students)
+
         # Serialize the data using the serializer
         serializer = StudentSerializer(students, many=True)
         return Response(serializer.data, status=200)
@@ -26,37 +31,69 @@ def all_student(request):
 @api_view(["GET"])
 def last_index(request, index):
     """
-    This function checks if the last student's index,
-    validated through their email address, exists.
+    This function checks if the last student's index, validated through their email address, exists.
     If it does, the function creates a student object with the
     relevant data by looping throught the range of the index backwards to the first.
 
     """
+
     if request.method == "GET":
-        # validate if it exist
-        student_index = is_email_address_exists(index)
+        student_index = index  # index is obtained from the request
 
-        if student_index:
-            if ("bc" in student_index) or ("pd" in student_index):
-                for index in range(1, int(student_index[7:]) + 1):
-                    
-                    # Convert index into relevant data
-                    course = student_index[2:-5]  # eg. => bc [ict] 23101
-                    program = get_key_by_value(PROGRAMS, student_index[:-8])  # eg. => [bc] ict23101
-                    year_enrolled = f"20{student_index[5:-3]}"  # eg. => bcict [23] 101
-                    index = f"{index:3}"  # 001, 012, 123
+        # Validate if the index exists through an email check
+        is_valid = is_email_address_exists(index)
+        # is_valid = True #for dev sake only to limit request to the api
 
-                    # Create a single student with the provided index
-                    Student.objects.create(
-                        index=index,
-                        course=course,
-                        program=program,
-                        year_enrolled=year_enrolled,
+        if is_valid:
+            if len(student_index) == 10:
+                # Check if it's a valid format for index (e.g., bcict21064)
+                if (
+                # Handle BTECH & DIPTECH requests
+                    student_index[:2] in ["bc", "pd"]
+                    and student_index[2:5].isalpha()
+                    and student_index[5:7].isdigit()
+                    and student_index[7:].isdigit()
+                ):
+                    for index in range(1, int(student_index[7:]) + 1):
+                        # Convert index into relevant data
+                        get_course = student_index[2:-5]
+                        get_program = get_key_by_value(PROGRAMS, student_index[:-8])
+                        get_year_enrolled = f"20{student_index[5:-3]}"
+                        get_index = f"{index:03}"
+
+                        get_email = generate_email(
+                            index=index,
+                            year=get_year_enrolled,
+                            course=get_course,
+                            program=PROGRAMS.get(get_program),
+                        )
+
+                        # Create a single student with the provided index
+                        Student.objects.create(
+                            index=get_index,
+                            email=get_email,
+                            course=get_course,
+                            program=get_program,
+                            year_enrolled=get_year_enrolled,
+                        )
+
+                    return Response(
+                        {"success": "Successfully created"},
+                        status=201,
                     )
 
-            return Response({"sucess": ""}, status=201)
+                # Handle HND requests
+                elif len(student_index) == 10 and student_index.isdigit():
+                    # todo   should perform a loop to populate the student info for HND
+                    return Response({student_index})
+
+            else:
+                # Handle the case where the index format is invalid
+                return Response(
+                    {"error": "Invalid index format or does not exist"}, status=400
+                )
         else:
-            # Handle the case where the index is not combination of course and program and date
-            return Response({"error": "Invalid index format or dose not exist"}, status=400)
+            # Handle the case where the email check fails
+            return Response({"error": "Invalid email address"}, status=400)
 
     return Response({"error": "Unsupported method"}, status=405)

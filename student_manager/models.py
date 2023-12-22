@@ -9,7 +9,7 @@ class Student(models.Model):
     program = models.CharField(max_length=50)
     year_enrolled = models.IntegerField()
 
-    # email = models.CharField(max_length=50)
+    email = models.CharField(max_length=50, default=None)
 
 
     def __str__(self):
