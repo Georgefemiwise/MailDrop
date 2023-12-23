@@ -1,9 +1,9 @@
-from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .utils import generate_email, get_key_by_value, is_email_address_exists
+from .utils import *
 from .models import Student
+from .api.api import is_email_address_exists
 from .serializers import StudentSerializer
 
 
@@ -37,7 +37,7 @@ def last_index(request, index):
 
     """
 
-    if request.method == "GET":
+    if request.method == "GET":  # todo change to PUT
         student_index = index  # index is obtained from the request
 
         # Validate if the index exists through an email check
@@ -48,7 +48,7 @@ def last_index(request, index):
             if len(student_index) == 10:
                 # Check if it's a valid format for index (e.g., bcict21064)
                 if (
-                # Handle BTECH & DIPTECH requests
+                    # Handle BTECH & DIPTECH requests
                     student_index[:2] in ["bc", "pd"]
                     and student_index[2:5].isalpha()
                     and student_index[5:7].isdigit()
