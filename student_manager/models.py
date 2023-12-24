@@ -4,13 +4,12 @@ from django.db import models
 
 
 class Student(models.Model):
-    index = models.CharField(max_length=10)
-    course = models.CharField(max_length=50)
-    program = models.CharField(max_length=50)
-    year_enrolled = models.IntegerField()
-
-    email = models.CharField(max_length=50, default=None)
-
+    index = models.CharField(max_length=10, unique=True)
+    email = models.EmailField(unique=True)
+    course = models.CharField(max_length=20)
+    program = models.CharField(max_length=10)
+    year_enrolled = models.CharField(max_length=4)
+    graduation_year = models.CharField(max_length=4)
 
     def __str__(self):
         return f"{self.index} - {self.course} - {self.program}"

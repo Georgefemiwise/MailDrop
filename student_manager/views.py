@@ -3,7 +3,6 @@ from rest_framework.response import Response
 
 from .utils import *
 from .models import Student
-from .api.api import is_email_address_exists
 from .serializers import StudentSerializer
 
 
@@ -68,6 +67,10 @@ def last_index(request, index):
                             program=PROGRAMS.get(get_program),
                         )
 
+                        get_graduation_data = cal_graduation_date(
+                            PROGRAMS.get(get_program), get_year_enrolled
+                        )
+
                         # Create a single student with the provided index
                         Student.objects.create(
                             index=get_index,
@@ -75,6 +78,7 @@ def last_index(request, index):
                             course=get_course,
                             program=get_program,
                             year_enrolled=get_year_enrolled,
+                            graduation_year=get_graduation_data,
                         )
 
                     return Response(

@@ -14,9 +14,7 @@ def get_key_by_value(dictionary: dict, target_value: str):
     return None
 
 
-
-
-def generate_email(program: str, index, year, course):
+def generate_email(program, index, year, course):
     """
     Generate the unique index number for the student's email.
 
@@ -24,7 +22,7 @@ def generate_email(program: str, index, year, course):
         program (str): The program code, e.g., "bc" or "pd".
         index: The student's index number.
         year: The year of enrollment.
-        course: The course code.
+        course: The course abbreviation.
 
     Returns:
         str: The generated unique email for the student.
@@ -37,7 +35,44 @@ def generate_email(program: str, index, year, course):
         generated_email = f"{program}{course}{year[2:]}{int(index):03}"
         return generated_email
     else:
-        # For other programs
+        # For HND programs
         year_code = year[2:]
         generated_email = f"{program}{year_code:05}{index:03}"
         return generated_email
+
+
+def cal_graduation_date(program, year):
+  
+    """
+    Calculate the expected graduation year for the student.
+    Returns:
+    - str: The graduation year. Default 4 years.
+    """
+
+    if program == "diptech":
+        return str(2 + int(year))
+
+    elif program == "hnd":
+        return str(3 + int(year))
+
+    else:
+        return str(4 + int(year))
+
+
+def is_email_address_exists(index: str) -> bool:
+    """
+    Validates email address existence and return True if it exists.
+    default to False if not.
+
+    https://docs.abstractapi.com/email-validation
+    """
+    try:
+        url = "https://emailvalidation.abstractapi.com/v1/?api_key=c965ef8f1ac945f1bd0e0b0372a4e2c6&email="
+        response = requests.get(f"{url}{index}@ttu.edu.gh")
+
+        if response.status_code == 200:
+            return True
+
+        return False
+    except Exception as e:
+        print(e)
