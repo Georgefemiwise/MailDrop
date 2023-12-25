@@ -29,20 +29,20 @@ def generate_email(program, index, year, course):
     """
     # Convert program code to lowercase for consistency
     program = program.lower()
+    domain = "@ttu.edu.gh"
 
     if program in ("bc", "pd"):
         # For "bc" or "pd" programs
-        generated_email = f"{program}{course}{year[2:]}{int(index):03}"
+        generated_email = f"{program}{course}{year[2:]}{int(index):03}{domain}"
         return generated_email
     else:
         # For HND programs
         year_code = year[2:]
-        generated_email = f"{program}{year_code:05}{index:03}"
+        generated_email = f"{program}{year_code:05}{index:03}{domain}"
         return generated_email
 
 
 def cal_graduation_date(program, year):
-  
     """
     Calculate the expected graduation year for the student.
     Returns:

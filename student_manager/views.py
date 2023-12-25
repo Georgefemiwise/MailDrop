@@ -41,7 +41,7 @@ def last_index(request, index):
 
         # Validate if the index exists through an email check
         is_valid = is_email_address_exists(index)
-        # is_valid = True #for dev sake only to limit request to the api
+        # is_valid = True  # for dev sake only to limit request to the api
 
         if is_valid:
             if len(student_index) == 10:
@@ -58,7 +58,7 @@ def last_index(request, index):
                         get_course = student_index[2:-5]
                         get_program = get_key_by_value(PROGRAMS, student_index[:-8])
                         get_year_enrolled = f"20{student_index[5:-3]}"
-                        get_index = f"{index:03}"
+                        get_index = f"{PROGRAMS.get(get_program)}{get_course}{get_year_enrolled[2:]}{index:03}".lower()
 
                         get_email = generate_email(
                             index=index,
