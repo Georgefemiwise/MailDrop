@@ -50,12 +50,15 @@ def cal_graduation_date(program, year):
     """
 
     if program == "diptech":
+        # usally a 2 year course
         return str(2 + int(year))
 
     elif program == "hnd":
+        # 3 year course
         return str(3 + int(year))
 
     else:
+        # default to 4 years
         return str(4 + int(year))
 
 
