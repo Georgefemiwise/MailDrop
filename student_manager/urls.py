@@ -27,5 +27,9 @@ urlpatterns = [
     path(
         "students/<str:index>/", views.get_student_by_index, name="get_student_by_index"
     ),
+      path(
+        "students/<str:index>/", views.get_student_by_index, name="get_student_by_index"
+    ), 
+    
     # Add more paths as needed
 ]

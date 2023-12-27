@@ -1,16 +1,11 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from django.shortcuts import get_object_or_404
 
-from .utils import *
+from .constants import *
+from .helper.utils import *
 from .models import Student
 from .serializers import StudentSerializer
-
-
-# major school programs
-PROGRAMS: dict = {"BTECH": "BC", "DIPTECH": "DP", "HND": "07"}
-COURCES = {"computer science": "ict"}
 
 
 @api_view(["GET"])
@@ -62,13 +57,20 @@ def create_student(request, index):
                         get_year_enrolled = f"20{student_index[5:-3]}"
                         get_index = f"{PROGRAMS.get(get_program)}{get_course}{get_year_enrolled[2:]}{index:03}".lower()
 
+                        check_existence = Student.objects.filter(
+                            index=get_index, program=get_program
+                        )
+                        if check_existence.exists():
+                            continue
+
+                        # get a generated email
                         get_email = generate_email(
                             index=index,
                             year=get_year_enrolled,
                             course=get_course,
                             program=PROGRAMS.get(get_program),
                         )
-
+                        # calculate the graduation year  for the student
                         get_graduation_data = cal_graduation_date(
                             PROGRAMS.get(get_program), get_year_enrolled
                         )
@@ -174,5 +176,12 @@ def count_students_graduating_in_year(request, year_enrolled):
         )
 
 
+@api_view(["GET"])
 def get_student_by_index(request, index):
-    pass
+    if request.method == "GET":
+        # Retrieve student from the database
+        student = Student.objects.get(index=index)
+
+        # Serialize the data using the serializer
+        serializer = StudentSerializer(student, many=False)
+        return Response(serializer.data, status=200)
