@@ -62,6 +62,21 @@ def cal_graduation_date(program, year):
         return str(4 + int(year))
 
 
+def generate_index_number(program, index, year_enrolled, course):
+    """
+    Generate the unique index number for the student.
+    Returns:
+    - str: The index number.
+    """
+
+    if program != "hnd":
+        return f"{program}{course}{year_enrolled[2:]}{int(index):03}".lower()
+
+    else:
+        year_code = year_enrolled[2:]
+        return f"{program}{year_code:05}{index:03}"
+
+
 def is_email_address_exists(index: str) -> bool:
     """
     Validates email address existence and return True if it exists.
@@ -79,3 +94,4 @@ def is_email_address_exists(index: str) -> bool:
         return False
     except Exception as e:
         print(e)
+# 0721000200

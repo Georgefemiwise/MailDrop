@@ -55,7 +55,12 @@ def create_student(request, index):
                         get_course = student_index[2:-5]
                         get_program = get_key_by_value(PROGRAMS, student_index[:-8])
                         get_year_enrolled = f"20{student_index[5:-3]}"
-                        get_index = f"{PROGRAMS.get(get_program)}{get_course}{get_year_enrolled[2:]}{index:03}".lower()
+                        get_index = generate_index_number(
+                            PROGRAMS.get(get_program),
+                            index,
+                            get_year_enrolled[2:],
+                            get_course,
+                        )
 
                         check_existence = Student.objects.filter(
                             index=get_index, program=get_program
@@ -93,6 +98,28 @@ def create_student(request, index):
                 # Handle HND requests
                 elif len(student_index) == 10 and student_index.isdigit():
                     # todo   should perform a loop to populate the student info for HND
+
+                    for index in range(1, int(student_index[7:]) + 1):
+                        get_index = generate_index_number()
+
+                        # get a generated email
+                        get_email = generate_email(
+                            index=index,
+                            year=get_year_enrolled,
+                            course=get_course,
+                            program=PROGRAMS.get(get_program),
+                        )
+                        
+
+                        # Create a single student with the provided index
+                        Student.objects.create(
+                            index=get_index,
+                            email=get_email,
+                            course=get_course,
+                            program=get_program,
+                            year_enrolled=get_year_enrolled,
+                            graduation_year=get_graduation_data,
+                        )
                     return Response({student_index})
 
             else:
