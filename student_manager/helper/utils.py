@@ -8,8 +8,12 @@ def get_key_by_value(dictionary: dict, target_value: str):
     Returns:
     - The key associated with the target value, or None if not found.
     """
+
     for key, value in dictionary.items():
-        if value.lower() == target_value.lower():
+        value = value.lower()
+        target_value = target_value.lower()
+        
+        if value == target_value:
             return key
     return None
 
@@ -28,7 +32,7 @@ def generate_email(program, index, year, course):
         str: The generated unique email for the student.
     """
     # Convert program code to lowercase for consistency
-    program = program.lower()
+    program = f"{program}".lower()
     domain = "@ttu.edu.gh"
 
     if program in ("bc", "pd"):
@@ -94,4 +98,6 @@ def is_email_address_exists(index: str) -> bool:
         return False
     except Exception as e:
         print(e)
+
+
 # 0721000200

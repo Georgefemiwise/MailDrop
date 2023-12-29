@@ -37,8 +37,8 @@ def create_student(request, index):
         student_index = index  # index is obtained from the request
 
         # Validate if the index exists through an email check
-        is_valid = is_email_address_exists(index)
-        # is_valid = True  # for dev sake only to limit request to the api
+        # is_valid = is_email_address_exists(index)
+        is_valid = True  # for dev sake only to limit request to the api
 
         if is_valid:
             if len(student_index) == 10:
@@ -53,7 +53,7 @@ def create_student(request, index):
                     for index in range(1, int(student_index[7:]) + 1):
                         # Convert index into relevant data
                         get_course = student_index[2:-5]
-                        get_program = get_key_by_value(PROGRAMS, student_index[:-8])
+                        get_program = get_key_by_value(PROGRAMS, student_index[:2])
                         get_year_enrolled = f"20{student_index[5:-3]}"
                         get_index = generate_index_number(
                             PROGRAMS.get(get_program),
@@ -61,7 +61,7 @@ def create_student(request, index):
                             get_year_enrolled[2:],
                             get_course,
                         )
-
+                        print(get_program)
                         check_existence = Student.objects.filter(
                             index=get_index, program=get_program
                         )
@@ -109,7 +109,6 @@ def create_student(request, index):
                             course=get_course,
                             program=PROGRAMS.get(get_program),
                         )
-                        
 
                         # Create a single student with the provided index
                         Student.objects.create(
