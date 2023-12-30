@@ -2,10 +2,35 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-from .constants import *
-from .helper.utils import *
+from student_manager.builder import (
+    create_student_for_btech_diptech,
+    create_student_for_hnd,
+)
+from student_manager.serializers import StudentSerializer
 from .models import Student
-from .serializers import StudentSerializer
+from .helper.utils import (
+    is_valid_email_address,
+)
+
+
+@api_view(["GET"])
+def create_student(request, index):
+    if request.method != "GET":
+        return Response({"error": "Unsupported method"}, status=405)
+
+    # if not is_valid_email_address(index):
+    #     return Response({"error": "Invalid email address"}, status=400)
+
+    student_index = index
+    if len(student_index) != 10:
+        return Response({"error": "Invalid index format or does not exist"}, status=400)
+
+    if student_index[:2] in ["bc", "pd"] and student_index[2:5].isalpha():
+        return create_student_for_btech_diptech(student_index)
+    elif student_index.isdigit():
+        return create_student_for_hnd(student_index)
+    else:
+        return Response({"error": "Invalid index format or does not exist"}, status=400)
 
 
 @api_view(["GET"])
@@ -22,115 +47,6 @@ def all_students(request):
         # Serialize the data using the serializer
         serializer = StudentSerializer(students, many=True)
         return Response(serializer.data, status=200)
-
-
-@api_view(["GET"])
-def create_student(request, index):
-    """
-    This function checks if the last student's index, validated through their email address, exists.
-    If it does, the function creates a student object with the
-    relevant data by looping throught the range of the index backwards to the first.
-
-    """
-
-    if request.method == "GET":  # todo change to PUT
-        student_index = index  # index is obtained from the request
-
-        # Validate if the index exists through an email check
-        # is_valid = is_email_address_exists(index)
-        is_valid = True  # for dev sake only to limit request to the api
-
-        if is_valid:
-            if len(student_index) == 10:
-                # Check if it's a valid format for index (e.g., bcict21064)
-                if (
-                    # Handle BTECH & DIPTECH requests
-                    student_index[:2] in ["bc", "pd"]
-                    and student_index[2:5].isalpha()
-                    and student_index[5:7].isdigit()
-                    and student_index[7:].isdigit()
-                ):
-                    for index in range(1, int(student_index[7:]) + 1):
-                        # Convert index into relevant data
-                        get_course = student_index[2:-5]
-                        get_program = get_key_by_value(PROGRAMS, student_index[:2])
-                        get_year_enrolled = f"20{student_index[5:-3]}"
-                        get_index = generate_index_number(
-                            PROGRAMS.get(get_program),
-                            index,
-                            get_year_enrolled[2:],
-                            get_course,
-                        )
-                        print(get_program)
-                        check_existence = Student.objects.filter(
-                            index=get_index, program=get_program
-                        )
-                        if check_existence.exists():
-                            continue
-
-                        # get a generated email
-                        get_email = generate_email(
-                            index=index,
-                            year=get_year_enrolled,
-                            course=get_course,
-                            program=PROGRAMS.get(get_program),
-                        )
-                        # calculate the graduation year  for the student
-                        get_graduation_data = cal_graduation_date(
-                            PROGRAMS.get(get_program), get_year_enrolled
-                        )
-
-                        # Create a single student with the provided index
-                        Student.objects.create(
-                            index=get_index,
-                            email=get_email,
-                            course=get_course,
-                            program=get_program,
-                            year_enrolled=get_year_enrolled,
-                            graduation_year=get_graduation_data,
-                        )
-
-                    return Response(
-                        {"success": "Successfully created"},
-                        status=201,
-                    )
-
-                # Handle HND requests
-                elif len(student_index) == 10 and student_index.isdigit():
-                    # todo   should perform a loop to populate the student info for HND
-
-                    for index in range(1, int(student_index[7:]) + 1):
-                        get_index = generate_index_number()
-
-                        # get a generated email
-                        get_email = generate_email(
-                            index=index,
-                            year=get_year_enrolled,
-                            course=get_course,
-                            program=PROGRAMS.get(get_program),
-                        )
-
-                        # Create a single student with the provided index
-                        Student.objects.create(
-                            index=get_index,
-                            email=get_email,
-                            course=get_course,
-                            program=get_program,
-                            year_enrolled=get_year_enrolled,
-                            graduation_year=get_graduation_data,
-                        )
-                    return Response({student_index})
-
-            else:
-                # Handle the case where the index format is invalid
-                return Response(
-                    {"error": "Invalid index format or does not exist"}, status=400
-                )
-        else:
-            # Handle the case where the email check fails
-            return Response({"error": "Invalid email address"}, status=400)
-
-    return Response({"error": "Unsupported method"}, status=405)
 
 
 @api_view(["GET"])

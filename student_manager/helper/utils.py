@@ -12,38 +12,20 @@ def get_key_by_value(dictionary: dict, target_value: str):
     for key, value in dictionary.items():
         value = value.lower()
         target_value = target_value.lower()
-        
+
         if value == target_value:
             return key
     return None
 
 
-def generate_email(program, index, year, course):
+def generate_email(index):
     """
-    Generate the unique index number for the student's email.
-
-    Args:
-        program (str): The program code, e.g., "bc" or "pd".
-        index: The student's index number.
-        year: The year of enrollment.
-        course: The course abbreviation.
-
-    Returns:
-        str: The generated unique email for the student.
+    Generate the unique index number for the student's email from index.
     """
-    # Convert program code to lowercase for consistency
-    program = f"{program}".lower()
+
     domain = "@ttu.edu.gh"
 
-    if program in ("bc", "pd"):
-        # For "bc" or "pd" programs
-        generated_email = f"{program}{course}{year[2:]}{int(index):03}{domain}"
-        return generated_email
-    else:
-        # For HND programs
-        year_code = year[2:]
-        generated_email = f"{program}{year_code:05}{index:03}{domain}"
-        return generated_email
+    return index + domain
 
 
 def cal_graduation_date(program, year):
@@ -66,22 +48,19 @@ def cal_graduation_date(program, year):
         return str(4 + int(year))
 
 
-def generate_index_number(program, index, year_enrolled, course):
+def generate_index_number(program, index, _year_enrolled, course=None):
     """
     Generate the unique index number for the student.
-    Returns:
-    - str: The index number.
     """
 
-    if program != "hnd":
-        return f"{program}{course}{year_enrolled[2:]}{int(index):03}".lower()
+    if program == "07" :
+        return f"{program}{_year_enrolled:05}{index:03}"
 
     else:
-        year_code = year_enrolled[2:]
-        return f"{program}{year_code:05}{index:03}"
+        return f"{program}{course}{_year_enrolled[2:]}{int(index):03}".lower()
 
 
-def is_email_address_exists(index: str) -> bool:
+def is_valid_email_address(index: str) -> bool:
     """
     Validates email address existence and return True if it exists.
     default to False if not.
