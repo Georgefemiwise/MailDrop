@@ -10,7 +10,7 @@ from student_manager.models import Student
 
 
 def create_student_for_btech_diptech(student_index):
-    program = get_key_by_value(PROGRAMS, student_index[:2])
+    program = student_index[:2]
     course = student_index[2:-5]
     year_enrolled = f"20{student_index[5:-3]}"
 
@@ -37,14 +37,15 @@ def create_single_student(program, year_enrolled, index, course=None):
     check_existence = Student.objects.filter(index=get_index, program=program)
     if not check_existence.exists():
         get_email = generate_email(index=get_index)
+        program = get_key_by_value(program)
+        get_graduation_data = cal_graduation_date(program, year_enrolled)
 
-        get_graduation_data = cal_graduation_date(PROGRAMS.get(program), year_enrolled)
-    print(check_existence.exists())
-        # Student.objects.create(
-        #     index=get_index,
-        #     email=get_email,
-        #     course=course if course is not None else "unknown",
-        #     program=program,
-        #     year_enrolled=year_enrolled,
-        #     graduation_year=get_graduation_data,
-        # )
+
+    Student.objects.create(
+        index=get_index,
+        email=get_email,
+        course=course if course is not None else "unknown",
+        program=program,
+        year_enrolled=year_enrolled,
+        graduation_year=get_graduation_data,
+    )

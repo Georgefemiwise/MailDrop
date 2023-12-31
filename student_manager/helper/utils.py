@@ -1,7 +1,9 @@
 import requests
 
+from student_manager.constants import PROGRAMS
 
-def get_key_by_value(dictionary: dict, target_value: str):
+
+def get_key_by_value(target_value: str):
     """
     Get the key associated with a specific value in a dictionary.
 
@@ -9,7 +11,7 @@ def get_key_by_value(dictionary: dict, target_value: str):
     - The key associated with the target value, or None if not found.
     """
 
-    for key, value in dictionary.items():
+    for key, value in PROGRAMS.items():
         value = value.lower()
         target_value = target_value.lower()
 
@@ -19,33 +21,24 @@ def get_key_by_value(dictionary: dict, target_value: str):
 
 
 def generate_email(index):
-    """
-    Generate the unique index number for the student's email from index.
-    """
-
-    domain = "@ttu.edu.gh"
-
-    return index + domain
+    """Generate the unique index number for the student's email from index."""
+    
+    return index + "@ttu.edu.gh"
 
 
 def cal_graduation_date(program, year):
     """
-    Calculate the expected graduation year for the student.
-    Returns:
-    - str: The graduation year. Default 4 years.
+    Calculate the expected graduation year for the student
     """
+    program_durations = {"diptech": 2, "hnd": 3}
 
-    if program == "diptech":
-        # usally a 2 year course
-        return str(2 + int(year))
+    program = program.lower()
 
-    elif program == "hnd":
-        # 3 year course
-        return str(3 + int(year))
+    # If program is in the dictionary,
+    # use its duration, otherwise default to 4 years
+    duration = program_durations.get(program, 4)
 
-    else:
-        # default to 4 years
-        return str(4 + int(year))
+    return str(duration + int(year))
 
 
 def generate_index_number(program, index, _year_enrolled, course=None):
@@ -53,7 +46,7 @@ def generate_index_number(program, index, _year_enrolled, course=None):
     Generate the unique index number for the student.
     """
 
-    if program == "07" :
+    if program == "07":
         return f"{program}{_year_enrolled:05}{index:03}"
 
     else:
@@ -77,6 +70,3 @@ def is_valid_email_address(index: str) -> bool:
         return False
     except Exception as e:
         print(e)
-
-
-# 0721000200
