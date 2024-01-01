@@ -18,8 +18,8 @@ def create_student(request, index):
     if request.method != "GET":
         return Response({"error": "Unsupported method"}, status=405)
 
-    # if not is_valid_email_address(index):
-    #     return Response({"error": "Invalid email address"}, status=400)
+    if not is_valid_email_address(index):
+        return Response({"error": "Invalid email address"}, status=400)
 
     student_index = index
     if len(student_index) != 10:

@@ -63,5 +63,4 @@ def try_increment_of_student():
             )
     else:
         # Handle the case where no student with an index is found
-        # No idea for now
         pass
