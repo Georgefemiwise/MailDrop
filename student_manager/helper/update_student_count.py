@@ -1,6 +1,6 @@
 import datetime
 
-from ..constants import COURCES, PROGRAMS
+from ..constants import COURSES, PROGRAMS
 from ..models import Student
 
 
@@ -18,7 +18,7 @@ def get_highest_index():
 
     # todo this course check needs a better implementation for other courses
     # todo defalut is computer science
-    course = COURCES["computer science"]
+    course = COURSES["computer science"]
 
     for program_code in PROGRAMS.keys():
         for year in [current_year, second_year, third_year, fourth_year]:
