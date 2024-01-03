@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # third party libery
     "rest_framework",
     "corsheaders",
+    "django_crontab",
     # installed apps
     "student_manager",
 ]
@@ -141,4 +142,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", 
+]
+
+CRONJOBS = [
+# (‘*/2 * * * *’, ‘myapp.cron.my_cron_job’)
 ]

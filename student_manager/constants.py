@@ -8,8 +8,8 @@ COURSES: dict = {"computer science": "ict"}
 
 CURRENT_YEAR: datetime = datetime.datetime.now().year
 YEARS: tuple = (
-    # (CURRENT_YEAR - 0),
-    # (CURRENT_YEAR - 1),
+    (CURRENT_YEAR - 0),
+    (CURRENT_YEAR - 1),
     (CURRENT_YEAR - 2),
-    # (CURRENT_YEAR - 3),
+    (CURRENT_YEAR - 3),
 )
