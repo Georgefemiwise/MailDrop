@@ -22,7 +22,7 @@ def get_key_by_value(target_value: str):
 
 def generate_email(index):
     """Generate the unique index number for the student's email from index."""
-    
+
     return index + "@ttu.edu.gh"
 
 
@@ -45,6 +45,7 @@ def generate_index_number(program, index, _year_enrolled, course=None):
     """
     Generate the unique index number for the student.
     """
+    index, _year_enrolled = str(index), str(_year_enrolled)
 
     if program == "07":
         return f"{program}{_year_enrolled:05}{index:03}"

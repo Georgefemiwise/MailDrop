@@ -2,11 +2,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-from student_manager.builder import (
+from student_manager.helper.builder import (
     create_student_for_btech_diptech,
     create_student_for_hnd,
 )
-from student_manager.helper import auto_create_student
 from student_manager.serializers import StudentSerializer
 from .models import Student
 from .helper.utils import (
@@ -42,7 +41,7 @@ def all_students(request):
     """
 
     if request.method == "GET":
-        auto_create_student.gen_random_student_index()
+        
         # Retrieve all students from the database
         students = Student.objects.all()
 
