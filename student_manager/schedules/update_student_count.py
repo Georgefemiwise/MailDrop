@@ -1,18 +1,9 @@
-import datetime
-
-from ..constants import COURSES, PROGRAMS
+from ..constants import COURSES, PROGRAMS,YEARS
 from ..models import Student
 
 
 def get_highest_index():
-    # Get the current year
-    current_year = datetime.datetime.now().year
-
-    # Calculate second, third, and fourth years
-    second_year = current_year - 1
-    third_year = current_year - 2
-    fourth_year = current_year - 3
-
+   
     highest_index_student = None
     max_index = None
 
@@ -21,7 +12,7 @@ def get_highest_index():
     course = COURSES["computer science"]
 
     for program_code in PROGRAMS.keys():
-        for year in [current_year, second_year, third_year, fourth_year]:
+        for year in YEARS:
             # Retrieve the students for the given program, course, and year
             students = Student.objects.filter(
                 year_enrolled=str(year),
@@ -43,6 +34,7 @@ def get_highest_index():
 
 
 def try_increment_of_student():
+
     # Get the student with the highest index
     highest_index_student = get_highest_index()
 
@@ -64,3 +56,5 @@ def try_increment_of_student():
     else:
         # Handle the case where no student with an index is found
         pass
+
+

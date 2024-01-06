@@ -144,9 +144,4 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
 
-CRONJOBS = [
-    (
-        "* * * * *",
-        "student_manager.cron.auto_create_student.testcron",
-    )
-]
+
