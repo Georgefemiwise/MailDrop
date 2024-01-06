@@ -8,7 +8,7 @@ _A self generating student details it allows you to send simple email messages t
 - It saves this information in the database
 - all data can then be retrieved
 
-#### Current result
+#### Target result
 
 ```
 [
