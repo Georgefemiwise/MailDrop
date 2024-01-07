@@ -8,7 +8,7 @@ def get_highest_index():
     max_index = None
 
     # todo this course check needs a better implementation for other courses
-    # todo defalut is computer science
+    # defalut is computer science
     course = COURSES["computer science"]
 
     for program_code in PROGRAMS.keys():
