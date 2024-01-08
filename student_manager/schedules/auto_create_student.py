@@ -20,14 +20,11 @@ def auto_create_student():
                     index=index_number,
                 )
 
-                # if is_valid_email_address(index):
-                #     # If the program is HND, create student for HND, else for BTECH/DIPTECH
+                if is_valid_email_address(index):
 
-                #     if program == "07":
-                #         create_student_for_hnd(index, True)
-                #     else:
-                #         create_student_for_btech_diptech(index, True)
+                    # If the program is HND, create student for HND, else for BTECH/DIPTECH
+                    if program == "07":
+                        create_student_for_hnd(index, True)
+                    else:
+                        create_student_for_btech_diptech(index, True)
 
-
-def testcron():
-    print(5 == (10 - 5))
