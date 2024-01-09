@@ -87,13 +87,14 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
     if DEBUG
+    # https://railway.app/project/7dc6df4b-96bc-41f6-a5a4-53ecd3496be5/service/dddb2784-df72-4641-8655-bb093e3ea75a
     else {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "railway",
         "USER": "postgres",
-        "PASSWORD": "3-afDa3d--fC61d32AedBg-eCAD-A5GC",
-        "HOST": "viaduct.proxy.rlwy.net",
-        "PORT": "24625",
+        "PASSWORD": "Cg*3f*F5d6DAEB11AEDEG1ecAAG5Ea*6",
+        "HOST": "monorail.proxy.rlwy.net",
+        "PORT": "12855",
     }
 }
 
@@ -143,5 +144,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
-
-

@@ -1,0 +1,6 @@
+2024-01-09 09:22:42,439 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-01-09 09:22:42,439 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-01-09 09:22:42,439 - INFO - Added job "get_highest_index" to job store "default"
+2024-01-09 09:22:42,440 - INFO - Added job "auto_create_student" to job store "default"
+2024-01-09 09:22:42,440 - INFO - Scheduler started
+2024-01-09 09:22:42,445 - INFO - Watching for file changes with StatReloader

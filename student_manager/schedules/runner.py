@@ -10,9 +10,9 @@ scheduler = BackgroundScheduler()
 
 
 # update student data every month
-scheduler.add_job(get_highest_index, "cron", month="1-12", day="*/15")
+scheduler.add_job(get_highest_index, "cron", month="1", day="9", hour="8")
 
 # run the scheduler once every year
-scheduler.add_job(auto_create_student, "cron", month="2", day="15")
+scheduler.add_job(auto_create_student, "cron", month="1", day="9", hour="9",minute="17")
 
 scheduler.start()
