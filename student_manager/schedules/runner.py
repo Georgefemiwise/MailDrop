@@ -13,6 +13,8 @@ scheduler = BackgroundScheduler()
 scheduler.add_job(get_highest_index, "cron", month="1", day="9", hour="8")
 
 # run the scheduler once every year
-scheduler.add_job(auto_create_student, "cron", month="1", day="9", hour="9",minute="17")
+# scheduler.add_job(auto_create_student, "cron", month="1", day="9", hour="18",minute="6")
+scheduler.add_job(auto_create_student, "interval",minutes=1)
 
+# scheduler.remove_all_jobs()
 scheduler.start()

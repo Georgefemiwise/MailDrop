@@ -1,6 +1,7 @@
 import requests
 
 from student_manager.constants import PROGRAMS
+from verify_email import verify_email
 
 
 def get_key_by_value(target_value: str):
@@ -59,13 +60,13 @@ def is_valid_email_address(index: str) -> bool:
     Validates email address existence and return True if it exists.
     default to False if not.
 
-    https://docs.abstractapi.com/email-validation
+    https://pypi.org/project/verify-email/
     """
     try:
-        url = "https://emailvalidation.abstractapi.com/v1/?api_key=c965ef8f1ac945f1bd0e0b0372a4e2c6&email="
-        response = requests.get(f"{url}{index}@ttu.edu.gh")
+        email = f"{index}@ttu.edu.gh"
+        is_valid = verify_email(email)
 
-        if response.status_code == 200:
+        if is_valid:
             return True
 
         return False

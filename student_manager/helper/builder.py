@@ -72,13 +72,13 @@ def create_single_student(program, year_enrolled, index, course=None):
         get_graduation_data = cal_graduation_date(program, year_enrolled)
 
         print(check_existence.exists(), get_email)
-        # Student.objects.create(
-        #     index=get_index,
-        #     email=get_email,
-        #     course=course if course is not None else "unknown",
-        #     program=program,
-        #     year_enrolled=year_enrolled,
-        #     graduation_year=get_graduation_data,
-        # )
+        Student.objects.create(
+            index=get_index,
+            email=get_email,
+            course=course if course is not None else "unknown",
+            program=program,
+            year_enrolled=year_enrolled,
+            graduation_year=get_graduation_data,
+        )
     else:
         pass
