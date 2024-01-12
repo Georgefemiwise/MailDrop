@@ -10,6 +10,8 @@ charset-normalizer==3.3.2
 Django==4.2.9
 django-cors-headers==4.3.1
 djangorestframework==3.14.0
+dnspython==2.4.2
+email-validator==2.1.0.post1
 idna==3.6
 psycopg2-binary==2.9.9
 pycares==4.4.0

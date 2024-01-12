@@ -15,6 +15,7 @@ from .helper.utils import (
 
 @api_view(["GET"])
 def create_student(request, index):
+    print(index[:2])
     if request.method != "GET":
         return Response({"error": "Unsupported method"}, status=405)
 
@@ -41,7 +42,6 @@ def all_students(request):
     """
 
     if request.method == "GET":
-        
         # Retrieve all students from the database
         students = Student.objects.all()
 

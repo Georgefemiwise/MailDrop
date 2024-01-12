@@ -1,7 +1,6 @@
 """handles the the scripts to be scheduled"""
 
-
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.background import BackgroundScheduler, BlockingScheduler
 from student_manager.schedules.auto_create_student import auto_create_student
 from student_manager.schedules.update_student_count import get_highest_index
 
@@ -14,7 +13,7 @@ scheduler.add_job(get_highest_index, "cron", month="1", day="9", hour="8")
 
 # run the scheduler once every year
 # scheduler.add_job(auto_create_student, "cron", month="1", day="9", hour="18",minute="6")
-scheduler.add_job(auto_create_student, "interval",minutes=1)
+scheduler.add_job(auto_create_student, "interval", minutes=1)
 
-# scheduler.remove_all_jobs()
-scheduler.start()
+
+# scheduler.start()
