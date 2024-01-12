@@ -1,7 +1,6 @@
-2024-01-09 22:23:33,568 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2024-01-09 22:23:33,569 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2024-01-09 22:23:33,569 - INFO - Added job "get_highest_index" to job store "default"
-2024-01-09 22:23:33,570 - INFO - Added job "auto_create_student" to job store "default"
-2024-01-09 22:23:33,570 - INFO - Scheduler started
-2024-01-09 22:24:33,181 - INFO - Running job "auto_create_student (trigger: interval[0:01:00], next run at: 2024-01-09 22:24:33 UTC)" (scheduled at 2024-01-09 22:24:33.180011+00:00)
-2024-01-09 22:24:33,183 - INFO - Job "auto_create_student (trigger: interval[0:01:00], next run at: 2024-01-09 22:25:33 UTC)" executed successfully
+2024-01-10 06:55:21,749 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-01-10 06:55:21,750 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-01-10 06:55:21,750 - INFO - Added job "get_highest_index" to job store "default"
+2024-01-10 06:55:21,751 - INFO - Added job "auto_create_student" to job store "default"
+2024-01-10 06:55:21,751 - INFO - Scheduler started
+2024-01-10 06:55:21,754 - INFO - Watching for file changes with StatReloader
