@@ -1,7 +1,5 @@
 import requests
-
 from student_manager.constants import PROGRAMS
-from verify_email import verify_email
 
 
 def get_key_by_value(target_value: str):
@@ -23,16 +21,13 @@ def get_key_by_value(target_value: str):
 
 def generate_email(index):
     """Generate the unique index number for the student's email from index."""
-
     return index + "@ttu.edu.gh"
 
 
 def cal_graduation_date(program, year):
-    """
-    Calculate the expected graduation year for the student
-    """
-    program_durations = {"diptech": 2, "hnd": 3}
+    """Calculate the expected graduation year for the student"""
 
+    program_durations = {"diptech": 2, "hnd": 3}
     program = program.lower()
 
     # If program is in the dictionary,
@@ -57,18 +52,40 @@ def generate_index_number(program, index, _year_enrolled, course=None):
 
 def is_valid_email_address(index: str) -> bool:
     """
-    Validates email address existence and return True if it exists.
-    default to False if not.
+    Validates email address existence and returns True if it exists, defaulting to False if not.
 
-    https://pypi.org/project/verify-email/
+    Args:
+    - index (str): The index part of the email address.
+
+    Returns:
+    - bool: True if the email is valid, False otherwise.
     """
+    base_url = "https://api.ValidEmail.net/"
+    email_domain = "ttu.edu.gh"
+    email = f"{index}@{email_domain}"
+
     try:
-        email = f"{index}@ttu.edu.gh"
-        is_valid = verify_email(email)
+        # Specify the parameters
+        params = {
+            "email": email,
+            "token": "393475785da24fc684234580f893c9f4",  # Add your API token here
+        }
 
-        if is_valid:
-            return True
+        # Make the GET request
+        response = requests.get(base_url, params=params)
+        response.raise_for_status()  # Raise an exception for bad response status codes
 
+        # Handle the response
+        data = response.json()
+        is_valid = data.get("IsValid", False)
+        return is_valid
+
+    except requests.RequestException as e:
+        # Log the error or handle it as needed
+        print(f"Request failed with error: {e}")
         return False
+
     except Exception as e:
-        print(e)
+        # Log the unexpected error
+        print(f"Unexpected error: {e}")
+        return False
