@@ -6,7 +6,6 @@ from student_manager.helper.utils import (
     generate_index_number,
     get_key_by_value,
 )
-from rest_framework.response import Response
 from student_manager.models import Student
 from django.db import IntegrityError
 
@@ -15,7 +14,7 @@ from django.db import IntegrityError
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    filename="created_students.log",
+    filename="logs/students.log",
     filemode="w",
 )
 logger = logging.getLogger(__name__)
